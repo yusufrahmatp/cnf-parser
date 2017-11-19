@@ -10,7 +10,7 @@ typedef struct yCYKElmtArray {
 } CYKElmtArray;
 
 typedef struct tCYK {
-	CYKElmtArray mat[NMaxCYK][NMaxCYK];
+	StringArray mat[NMaxCYK][NMaxCYK];
 	int row_size;
 	int col_size;
 } CYK;

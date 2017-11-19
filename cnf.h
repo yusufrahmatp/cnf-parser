@@ -12,7 +12,7 @@ typedef struct tCNF {
 } CNF;
 
 typedef struct tCNFArray {
-	CNF cnf[NMaxCNGArrLength];
+	CNF arr[NMaxCNGArrLength];
 	int size;
 } CNFArray;
 
