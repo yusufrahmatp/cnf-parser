@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#define NMaxTokenLength 20
+#define NMaxTokenLength 10
 #define NMaxTokenArrSize 20
 
 #define TERMINAL_TOKEN_TYPE 'T'
@@ -8,6 +8,7 @@
 
 struct Token {
 	char str[NMaxTokenLength];
+	char str2[NMaxTokenLength];
 	char type;
 };
 
