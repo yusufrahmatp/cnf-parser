@@ -1,15 +1,19 @@
+#ifndef CNF_H_
+#define CNF_H_
+
 #include "token.h"
 
 #define NMaxCNFSourceLength 10
 #define NMaxCNGArrLength 10
 
-struct CNF {
+typedef struct tCNF {
 	char source[NMaxCNFSourceLength];
 	Token destination;
-};
+} CNF;
 
-struct CNFArray {
+typedef struct tCNFArray {
 	CNF cnf[NMaxCNGArrLength];
 	int size;
-};
+} CNFArray;
 
+#endif

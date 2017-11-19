@@ -1,3 +1,6 @@
+#ifndef CNFIO_H_
+#define CNFIO_H_
+
 #include "token.h"
 
 void ReadCNF(TokenArray *T) {
@@ -6,3 +9,5 @@ void ReadCNF(TokenArray *T) {
 
 	(*T).
 }
+
+#endif
