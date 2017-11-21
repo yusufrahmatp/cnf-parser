@@ -8,7 +8,7 @@
 <VariableDeclaration>
 <ListVariable>
 <Variable>
-<Listidentifier>
+<ListIdentifier>
 <OtherIdentifier>
 <DataStructure>
 <BeginArray>
@@ -45,7 +45,7 @@
 <MicroProgram>
 <BodyMicroProgram>
 <IfElseRecursive>
-<ElseIfContinutiy>
+<ElseIfContinuity>
 <ElseIf>
 <BeginElseIf>
 <ElseIfEnd>
@@ -83,7 +83,7 @@
 <Colon>
 <DataType>
 <ArrayType>
-<OpenSQParam>
+<OpenSQParan>
 <DoublePeriod>
 <CloseSQParan>
 <OfToken>
@@ -121,8 +121,8 @@
 <ListVariable> <ListVariable> <ListVariable>
 <Variable> <ListIdentifier> <DataStructure>
 <Variable> <ListIdentifier> <DataType>
-<Listidentifier> <Identifier> <Colon>
-<Listidentifier> <Identifier> <Otheridentifier>
+<ListIdentifier> <Identifier> <Colon>
+<ListIdentifier> <Identifier> <OtherIdentifier>
 <OtherIdentifier> <Comma> <ListIdentifier>
 <DataStructure> <ArrayType> <BeginArray>
 <BeginArray> <OpenSQParan> <SizeOfArray>
@@ -175,7 +175,7 @@
 <BodyMicroProgram> <ListStatement> <EndToken>
 <IfElseRecursive> <ElseToken> <MicroProgram>
 <IfElseRecursive> <ElseToken> <ElseIfContinuity>
-<ElseIfContinutiy> <IfToken> <ElseIf>
+<ElseIfContinuity> <IfToken> <ElseIf>
 <ElseIf> <Condition> <BeginElseIf>
 <BeginElseIf> <ThenToken> <ElseIfEnd>
 <ElseIfEnd> <MicroProgram> <ElseIfClose>
@@ -206,10 +206,10 @@
 <EndRepeat> <UntilToken> <Condition>
 <Sinput> <Input> <TargetInput>
 <TargetInput> <OpenParan> <CloseInput>
-<CloseInput> <Identifier> <CloseParam>
+<CloseInput> <Identifier> <CloseParan>
 <Soutput> <Output> <TargetOutput>
 <TargetOutput> <OpenParan> <CloseOutput>
-<CloseOutput> <Identifier> <CloseParam>
+<CloseOutput> <Identifier> <CloseParan>
 # list of produksi yang jadi token
 53
 <Identifier> IDENTIFIER
@@ -224,7 +224,7 @@
 <DataType> TYPE_REAL
 <DataType> TYPE_CHAR
 <ArrayType> ARRAY
-<OpenSQParam> OPENSQPARAN
+<OpenSQParan> OPENSQPARAN
 <DoublePeriod> DOUBLE_PERIOD
 <CloseSQParan> CLOSESQPARAN
 <OfToken> OF

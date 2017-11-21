@@ -187,6 +187,8 @@ Terminal getToken(char str[]) {
 		return OPENCRPARAN;
 	} else if (!strcmp(str, "CLOSECRPARAN")) {
 		return CLOSECRPARAN;
+	} else if (!strcmp(str, "ARRAY")) {
+		return ARRAY;
 	} else {
 		return -1;
 	}
