@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "boolean.h"
 #include "customstring.h"
+#include "cnf.h"
 // #include "parser.h"
 
 FILE* FIN;
@@ -17,16 +18,19 @@ typedef struct tTerminalArray {
 	int size;
 } TerminalArray;
 
-// char terminals[][30] =
-// {
-// 	"program", "var", "integer", "real", "char", "array", "of", "begin",
-// 	"+", "-", "*", "/",
-// 	"div", "mod", "if", "then", "else", "while", "do", "to", "downto", "step", "repeat", "until",
-// 	"input", "output",
-// 	"0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
-// 	"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",
-// 	";", ":", "=", ".", ",", "<", ">", "<=", ">=", "=", "<>", "'"
-// }; // size
+const int terminal_enum[] = {
+	PROGRAM, TYPE_INT, TYPE_REAL, TYPE_CHAR, ARRAY, OF, BEGIN,
+	IF, THEN, ELSE, WHILE, DO, TO, DOWNTO, STEP, REPEAT, UNTIL,
+	INPUT, OUTPUT,
+	SEMICOLON, COLON, EQUAL, NOT_EQUAL, PERIOD, DOUBLE_PERIOD, COMMA, LESS, GREATER, LESS_EQUAL, GREATER_EQUAL, ASSIGNMENT, TICK
+};
+
+char terminal[][30] = {
+	"program", "integer", "real", "char", "array", "of", "begin",
+	"if", "then", "else", "while", "do", "to", "downto", "step", "repeat", "until",
+	"input", "output",
+	";", ":", "=", "<>", ".", "..", ",", "<", ">", "<=", ">=", ":=", "'"
+};
 
 boolean IsAlphabet(char c) {
 	return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'));
@@ -46,12 +50,35 @@ void IgnoreBlank() {
 	}
 }
 
+boolean IsStringSame(char a[], char b[]) {
+	return (strcmp(a,b) == 0);
+}
+
+int GetEnumValueFromTerminalString(char c[20]) {
+	// Match string with easily identifiable terminal
+	int arrsize = sizeof(terminal_enum)/sizeof(terminal_enum[0]);
+	for (int i = 0; i < arrsize; i++) {
+		if (IsStringSame(c, terminal[i])) {
+			return terminal_enum[i];
+		}
+	}
+	if (IsStringSame(c, "+") || IsStringSame(c, "-") || IsStringSame(c, "*") || IsStringSame(c, "/") || IsStringSame(c, "%")) {
+		return OPT;
+	}
+	// Handle other case (var, int, etc)
+	return -1;
+}
+
+// >= .. <= <>
+// TODO:
+// - build pipeline : read file => lower case => convert to
+// - add line and col prop to each string/terminal
+// - testing
 void parse() {
 	char file_name[] = "he.txt";
-	// printf("Enter file name: "); scanf("%s", file_name);
 	FIN = fopen(file_name, "r");
 
-	TerminalArray result;
+	StringArray result;
 	result.size = 0;
 
 	boolean first = true;
@@ -65,9 +92,14 @@ void parse() {
 		IgnoreBlank();
 
 		if (!first && !noread) {
-			printf("bukan first\n");
 			CC = getc(FIN);
+			IgnoreBlank();
+		} else if (noread) {
 			noread = false;
+		}
+
+		if (CC == EOF) {
+			break;
 		}
 
 		if (IsAlphaNumerical(CC)) {
@@ -76,8 +108,6 @@ void parse() {
 				CC = getc(FIN);
 				if (!IsAlphaNumerical(CC) || CC == EOF || CC == ' ' || CC == '\n' || CC == '\t') {
 					result.arr[result.size][i+1] = '\0';
-				}
-				if (!IsAlphaNumerical(CC)) {
 					noread = true;
 				}
 			}
@@ -90,11 +120,31 @@ void parse() {
 					result.arr[result.size][2] = '\0';
 				} else {
 					result.arr[result.size][1] = '\0';
+					noread = true;
+				}
+			} else if (CC == '.') {
+				result.arr[result.size][0] = CC;
+				CC = getc(FIN);
+				if (CC == '.') {
+					result.arr[result.size][1] = CC;
+					result.arr[result.size][2] = '\0';
+				} else {
+					result.arr[result.size][1] = '\0';
+					noread = true;
+				}
+			} else if (CC == ':') {
+				result.arr[result.size][0] = CC;
+				CC = getc(FIN);
+				if (CC == '=') {
+					result.arr[result.size][1] = CC;
+					result.arr[result.size][2] = '\0';
+				} else {
+					result.arr[result.size][1] = '\0';
+					noread = true;
 				}
 			} else {
 				result.arr[result.size][0] = CC;
 				result.arr[result.size][1] = '\0';
-				CC = getc(FIN);
 			}
 		}
 
@@ -109,5 +159,7 @@ void parse() {
 }
 
 int main() {
-	parse();
+	// parse();
+	char c[] = "+";
+	printf("hasil %d\n", GetEnumValueFromTerminalString(c));
 }
