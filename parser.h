@@ -12,6 +12,8 @@ typedef struct tTerminalArray {
 	int size;
 } TerminalArray;
 
+extern TerminalArray resultX;
+
 void parse();
 
 #endif

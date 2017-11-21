@@ -1,8 +1,8 @@
 program abc;
 
 var
-	a, b: integer;
+	a: integer;
 
 begin
-	a := -1.2;
+	a := 2;
 end.

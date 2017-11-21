@@ -309,7 +309,7 @@ void parse() {
 
 		resultX.arr[resultX.size].val = GetEnumValueFromTerminalString(result.arr[result.size]);
 
-		printf(">>> %s >> enum = %d\n", result.arr[result.size], resultX.arr[resultX.size].val);
+		// printf(">>> %s >> enum = %d\n", result.arr[result.size], resultX.arr[resultX.size].val);
 
 		result.size++;
 		resultX.size++;

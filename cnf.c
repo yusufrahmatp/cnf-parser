@@ -49,7 +49,7 @@ void readCNF() {
 	}
 
 	for (int i = 0; i < var.varCount; ++i) {
-		printf("%s\n", var.T[i]);
+		// printf("%s\n", var.T[i]);
 	}
 
 	ignoreLine();								// Ignore the rest of the line
@@ -74,7 +74,7 @@ void readCNF() {
 	}
 
 	for (int i = 0; i < prodVar.prodCount; i++) {
-		printf("%d %d %d\n", prodVar.T[i].sourceIdx, prodVar.T[i].var1Idx, prodVar.T[i].var2Idx);
+		// printf("%d %d %d\n", prodVar.T[i].sourceIdx, prodVar.T[i].var1Idx, prodVar.T[i].var2Idx);
 	}
 
 
@@ -91,9 +91,9 @@ void readCNF() {
 		prodTerminal.T[i].terminal = getToken(str);
 	}
 
-	for (int i = 0; i < prodTerminal.prodCount; i++) {
-		printf("%d %d\n", prodTerminal.T[i].sourceIdx, prodTerminal.T[i].terminal);
-	}
+	// for (int i = 0; i < prodTerminal.prodCount; i++) {
+		// printf("%d %d\n", prodTerminal.T[i].sourceIdx, prodTerminal.T[i].terminal);
+	// }
 }
 
 Terminal getToken(char str[]) {

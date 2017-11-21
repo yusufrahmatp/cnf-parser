@@ -1,6 +1,7 @@
 #include "token.h"
 #include "cnf.h"
 #include "customstring.h"
+#include "parser.h"
 
 #define NMaxCYK 20
 

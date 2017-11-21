@@ -3,6 +3,7 @@
 #include "cyk.h"
 #include "token.h"
 #include "customstring.h"
+#include "parser.h"
 
 void InitializeCYK(CYKMatrix *C, int row_size, int col_size) {
 	(*C).row_size = row_size;
@@ -17,7 +18,7 @@ void SolveCYK(arrayOfProductionVar P1, arrayOfProductionTerminal P2, TerminalArr
 			cyk.mat[i][j].size = 0;
 			if (i == 0) {
 				for (int k = 0; k < P2.prodCount; k++) {
-					if (P2.T[k].terminal == S.arr[j]) {
+					if (P2.T[k].terminal == S.arr[j].val) {
 						cyk.mat[i][j].arr[cyk.mat[i][j].size] = P2.T[k].sourceIdx;
 						cyk.mat[i][j].size++;
 					}
@@ -48,11 +49,11 @@ void SolveCYK(arrayOfProductionVar P1, arrayOfProductionTerminal P2, TerminalArr
 
 				// megik
 				for (int k = 0; k < cross_size; k++) {
-					for (int x = 0; x < P1.size; x++) {
-						if (P1.arr[x].var1Idx == cross[k][0] && P1.arr[x].var2Idx == cross[k][1]) {
+					for (int x = 0; x < P1.prodCount; x++) {
+						if (P1.T[x].var1Idx == cross[k][0] && P1.T[x].var2Idx == cross[k][1]) {
 							boolean already_in_arr = false;
 							for (int y = 0; y < cyk.mat[i][j].size; y++) {
-								if (cyk.mat[i][j].arr[y] ==  P1.arr[x].sourceIdx) {
+								if (cyk.mat[i][j].arr[y] ==  P1.T[x].sourceIdx) {
 									already_in_arr = true;
 									break;
 								}
