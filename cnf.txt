@@ -1,5 +1,5 @@
 # list of variables
-108
+110
 <Identifier>
 <Start>
 <WithoutTitle>
@@ -54,6 +54,7 @@
 <RecursiveCondition>
 <TargetCondition>
 <ConditionOperation>
+<ConditionLogic>
 <Swhile>
 <BeginWhile>
 <WhileBody>
@@ -99,6 +100,7 @@
 <OpenParan>
 <CloseParan>
 <ConditionOperator>
+<LogicToken>
 <WhileToken>
 <ForToken>
 <DirToken>
@@ -182,12 +184,12 @@
 <ElseIfClose> <ElseToken> <MicroProgram>
 <Condition> <OpenParan> <RecursiveCondition>
 <Condition> <TargetCondition> <ConditionOperation>
-<Condition> <Condition> <ConditionOperation>
+<Condition> <Condition> <ConditionLogic>
 <RecursiveCondition> <Condition> <CloseParan>
 <TargetCondition> <Identifier> <ArrayIndex>
 <TargetCondition> <Operand> <Operation>
 <ConditionOperation> <ConditionOperator> <TargetCondition>
-<ConditionOperation> <ConditionOperator> <Condition>
+<ConditionLogic> <LogicToken> <Condition>
 <Swhile> <WhileToken> <BeginWhile>
 <BeginWhile> <Condition> <WhileBody>
 <WhileBody> <DoToken> <MicroProgram>
@@ -211,7 +213,7 @@
 <TargetOutput> <OpenParan> <CloseOutput>
 <CloseOutput> <Identifier> <CloseParan>
 # list of produksi yang jadi token
-53
+55
 <Identifier> IDENTIFIER
 <Numbers> NUM_INT
 <ProgramToken> PROGRAM
@@ -249,6 +251,8 @@
 <CloseParan> CLOSEPARAN
 <TargetCondition> NUM_INT
 <TargetCondition> NUM_REAL
+<LogicToken> AND
+<LogicToken> OR
 <ConditionOperator> LESS
 <ConditionOperator> GREATER
 <ConditionOperator> LESS_EQUAL

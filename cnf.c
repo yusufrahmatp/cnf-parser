@@ -189,6 +189,10 @@ Terminal getToken(char str[]) {
 		return CLOSECRPARAN;
 	} else if (!strcmp(str, "ARRAY")) {
 		return ARRAY;
+	} else if (!strcmp(str, "AND")) {
+		return AND;
+	} else if (!strcmp(str, "OR")) {
+		return OR;
 	} else {
 		return -1;
 	}
