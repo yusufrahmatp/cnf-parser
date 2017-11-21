@@ -137,7 +137,7 @@ void TranslateEnumToString(char c[], int x) {
 	if (x == OPT) {
 		strcpy(c, "+");
 	} else if (x == CHAR) {
-		strcpy(c, "+");
+		strcpy(c, "'a'");
 	} else if (x == NUM_INT) {
 		strcpy(c, "123");
 	} else if (x == NUM_REAL) {
@@ -209,6 +209,8 @@ void parse() {
 			break;
 		}
 
+		result.arr[result.size][0] = '\0';
+
 		resultX.arr[resultX.size].line = cur_line;
 		resultX.arr[resultX.size].col = cur_col;
 
@@ -224,12 +226,6 @@ void parse() {
 						noread = true;
 					}
 				}
-				if (CC == '\n') {
-					// NextLine();
-					// CC = getc(FIN);
-					// printf("HEHEHEHEHEHEHHHEEHEHEHEHEHEHEHEHEHE %c\n", CC);
-					// noread = true;
-				}
 			} else {
 				for (int i = 0; IsNumerical(CC) && CC != EOF && CC != ' ' && CC != '\n' && CC != '\t'; i++) {
 					result.arr[result.size][i] = CC;
@@ -237,9 +233,6 @@ void parse() {
 					if (!IsNumerical(CC) || CC == EOF || CC == ' ' || CC == '\n' || CC == '\t') {
 						result.arr[result.size][i+1] = '\0';
 						noread = true;
-					}
-					if (CC == '\n') {
-						// NextLine();
 					}
 				}
 			}
@@ -254,9 +247,6 @@ void parse() {
 					result.arr[result.size][1] = '\0';
 					noread = true;
 				}
-				if (CC == '\n') {
-					// NextLine();
-				}
 			} else if (CC == '.') {
 				result.arr[result.size][0] = CC;
 				CC = getc(FIN);
@@ -267,21 +257,17 @@ void parse() {
 					result.arr[result.size][1] = '\0';
 					noread = true;
 				}
-				if (CC == '\n') {
-					// NextLine();
-				}
 			} else if (CC == ':') {
 				result.arr[result.size][0] = CC;
+				// printf("YEUU %c == %c, ", CC, result.arr[result.size][0]);
 				CC = getc(FIN);
 				if (CC == '=') {
 					result.arr[result.size][1] = CC;
+					// printf("%c == %c ", CC, result.arr[result.size][1]);
 					result.arr[result.size][2] = '\0';
 				} else {
 					result.arr[result.size][1] = '\0';
 					noread = true;
-				}
-				if (CC == '\n') {
-					// NextLine();
 				}
 			} else if (CC == '\'') {
 				result.arr[result.size][0] = CC;
@@ -296,9 +282,6 @@ void parse() {
 					} else {
 						result.arr[result.size][i] = CC;
 					}
-					if (CC == '\n') {
-						// NextLine();
-					}
 				}
 			} else {
 				result.arr[result.size][0] = CC;
@@ -308,7 +291,7 @@ void parse() {
 
 		resultX.arr[resultX.size].val = GetEnumValueFromTerminalString(result.arr[result.size]);
 
-		printf(">>> %s >> enum = %d\n", result.arr[result.size], resultX.arr[resultX.size].val);
+		// printf(">>> %s >> enum = %d\n", result.arr[result.size], resultX.arr[resultX.size].val);
 
 		result.size++;
 		resultX.size++;
