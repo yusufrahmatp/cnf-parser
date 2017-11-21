@@ -68,6 +68,6 @@ void getString();
 
 void getInt();
 
-int getToken(char str[]);
+Terminal getToken(char str[]);
 
 #endif
