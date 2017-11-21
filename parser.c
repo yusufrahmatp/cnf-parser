@@ -15,7 +15,7 @@ TerminalArray resultX;
 
 const int terminal_enum[] = {
 	PROGRAM, VAR, TYPE_INT, TYPE_REAL, TYPE_CHAR, ARRAY, OF, BEGIN, END,
-	IF, THEN, ELSE, WHILE, DO, TO, DOWNTO, STEP, REPEAT, UNTIL, FOR,
+	IF, THEN, ELSE, WHILE, DO, TO, DOWNTO, STEP, REPEAT, UNTIL, FOR, AND, OR,
 	INPUT, OUTPUT,
 	SEMICOLON, COLON, EQUAL, NOT_EQUAL, PERIOD, DOUBLE_PERIOD, COMMA, LESS, GREATER, LESS_EQUAL, GREATER_EQUAL, ASSIGNMENT, TICK,
 	OPENSQPARAN, CLOSESQPARAN, OPENPARAN, CLOSEPARAN, OPENCRPARAN, CLOSECRPARAN
@@ -23,7 +23,7 @@ const int terminal_enum[] = {
 
 char terminal[][30] = {
 	"program", "var", "integer", "real", "char", "array", "of", "begin", "end",
-	"if", "then", "else", "while", "do", "to", "downto", "step", "repeat", "until", "for",
+	"if", "then", "else", "while", "do", "to", "downto", "step", "repeat", "until", "for", "and", "or",
 	"input", "output",
 	";", ":", "=", "<>", ".", "..", ",", "<", ">", "<=", ">=", ":=", "'",
 	"[", "]", "(", ")", "{", "}"
