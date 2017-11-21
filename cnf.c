@@ -181,6 +181,10 @@ Terminal getToken(char str[]) {
 		return OPENPARAN;
 	} else if (!strcmp(str, "CLOSEPARAN")) {
 		return CLOSEPARAN;
+	} else if (!strcmp(str, "OPENCRPARAN")) {
+		return OPENCRPARAN;
+	} else if (!strcmp(str, "CLOSECRPARAN")) {
+		return CLOSECRPARAN;
 	} else {
 		return -1;
 	}
