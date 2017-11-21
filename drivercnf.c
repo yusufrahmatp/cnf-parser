@@ -63,8 +63,8 @@ int main() {
 		getString();
 		prodTerminal.T[i].sourceIdx = findVarIdx(str);
 
-		getInt();
-		prodTerminal.T[i].terminal = num;	
+		getString();
+		prodTerminal.T[i].terminal = getToken(str);	
 	}
 
 	for (int i = 0; i < prodTerminal.prodCount; i++) {

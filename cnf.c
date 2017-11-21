@@ -97,83 +97,81 @@ void readCNF() {
 }
 
 Terminal getToken(char str[]) {
-	if (strcmp(str, "PROGRAM")) {
+	if (!strcmp(str, "PROGRAM")) {
 		return PROGRAM;
-	} else if (strcmp(str, "PROGRAM")) {
-		return PROGRAM;
-	} else if (strcmp(str, "VAR")) {
+	} else if (!strcmp(str, "VAR")) {
 		return VAR;
-	} else if (strcmp(str, "IDENTIFIER")) {
+	} else if (!strcmp(str, "IDENTIFIER")) {
 		return IDENTIFIER;
-	} else if (strcmp(str, "TYPE_INT")) {
+	} else if (!strcmp(str, "TYPE_INT")) {
 		return TYPE_INT;
-	} else if (strcmp(str, "TYPE_REAL")) {
+	} else if (!strcmp(str, "TYPE_REAL")) {
 		return TYPE_REAL;
-	} else if (strcmp(str, "TYPE_CHAR")) {
+	} else if (!strcmp(str, "TYPE_CHAR")) {
 		return ARRAY;
-	} else if (strcmp(str, "OF")) {
+	} else if (!strcmp(str, "OF")) {
 		return OF;
-	} else if (strcmp(str, "BEGIN")) {
+	} else if (!strcmp(str, "BEGIN")) {
 		return BEGIN;
-	} else if (strcmp(str, "END")) {
+	} else if (!strcmp(str, "END")) {
 		return END;
-	} else if (strcmp(str, "NUM_INT")) {
+	} else if (!strcmp(str, "NUM_INT")) {
 		return NUM_INT;
-	} else if (strcmp(str, "NUM_REAL")) {
+	} else if (!strcmp(str, "NUM_REAL")) {
 		return NUM_REAL;
-	} else if (strcmp(str, "CHAR")) {
+	} else if (!strcmp(str, "CHAR")) {
 		return CHAR;
-	} else if (strcmp(str, "OPT")) {
+	} else if (!strcmp(str, "OPT")) {
 		return OPT;
-	} else if (strcmp(str, "IF")) {
+	} else if (!strcmp(str, "IF")) {
 		return IF;
-	} else if (strcmp(str, "THEN")) {
+	} else if (!strcmp(str, "THEN")) {
 		return THEN;
-	} else if (strcmp(str, "ELSE")) {
+	} else if (!strcmp(str, "ELSE")) {
 		return ELSE;
-	} else if (strcmp(str, "WHILE")) {
+	} else if (!strcmp(str, "WHILE")) {
 		return WHILE;
-	} else if (strcmp(str, "DO")) {
+	} else if (!strcmp(str, "DO")) {
 		return DO;
-	} else if (strcmp(str, "TO")) {
+	} else if (!strcmp(str, "TO")) {
 		return TO;
-	} else if (strcmp(str, "DOWNTO")) {
+	} else if (!strcmp(str, "DOWNTO")) {
 		return DOWNTO;
-	} else if (strcmp(str, "STEP")) {
+	} else if (!strcmp(str, "STEP")) {
 		return STEP;
-	} else if (strcmp(str, "REPEAT")) {
+	} else if (!strcmp(str, "REPEAT")) {
 		return REPEAT;
-	} else if (strcmp(str, "UNTIL")) {
+	} else if (!strcmp(str, "UNTIL")) {
 		return UNTIL;
-	} else if (strcmp(str, "INPUT")) {
+	} else if (!strcmp(str, "INPUT")) {
 		return INPUT;
-	} else if (strcmp(str, "OUTPUT")) {
+	} else if (!strcmp(str, "OUTPUT")) {
 		return OUTPUT;
-	} else if (strcmp(str, "SEMICOLON")) {
+	} else if (!strcmp(str, "SEMICOLON")) {
 		return SEMICOLON;
-	} else if (strcmp(str, "COLON")) {
+	} else if (!strcmp(str, "COLON")) {
 		return COLON;
-	} else if (strcmp(str, "EQUAL")) {
+	} else if (!strcmp(str, "EQUAL")) {
 		return EQUAL;
-	} else if (strcmp(str, "NOT_EQUAL")) {
+	} else if (!strcmp(str, "NOT_EQUAL")) {
 		return NOT_EQUAL;
-	} else if (strcmp(str, "PERIOD")) {
+	} else if (!strcmp(str, "PERIOD")) {
 		return PERIOD;
-	} else if (strcmp(str, "DOUBLE_PERIOD")) {
+	} else if (!strcmp(str, "DOUBLE_PERIOD")) {
 		return DOUBLE_PERIOD;
-	} else if (strcmp(str, "COMMA")) {
+	} else if (!strcmp(str, "COMMA")) {
 		return COMMA;
-	} else if (strcmp(str, "LESS")) {
+	} else if (!strcmp(str, "LESS")) {
 		return LESS;
-	} else if (strcmp(str, "GREATER")) {
+	} else if (!strcmp(str, "GREATER")) {
 		return GREATER;
-	} else if (strcmp(str, "LESS_EQUAL")) {
+	} else if (!strcmp(str, "LESS_EQUAL")) {
 		return LESS_EQUAL;
-	} else if (strcmp(str, "GREATER_EQUAL")) {
+	} else if (!strcmp(str, "GREATER_EQUAL")) {
 		return GREATER_EQUAL;
-	} else if (strcmp(str, "ASSIGNMENT")) {
+	} else if (!strcmp(str, "ASSIGNMENT")) {
 		return ASSIGNMENT;
-	} else if (strcmp(str, "TICK")) {
+	} else if (!strcmp(str, "TICK")) {
 		return TICK;
 	} else {
 		return -1;
