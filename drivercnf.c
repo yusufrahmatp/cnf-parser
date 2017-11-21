@@ -16,7 +16,7 @@ int main() {
 	}
 
 	for (int i = 0; i < var.varCount; ++i) {
-		printf("%s\n", var.T[i]);
+		printf("%d: %s\n", i, var.T[i]);
 	}
 
 	ignoreLine();
@@ -47,7 +47,7 @@ int main() {
 	}
 
 	for (int i = 0; i < prodVar.prodCount; i++) {
-		printf("%d %d %d\n", prodVar.T[i].sourceIdx, prodVar.T[i].var1Idx, prodVar.T[i].var2Idx);
+		printf("%d: %d %d %d\n", i, prodVar.T[i].sourceIdx, prodVar.T[i].var1Idx, prodVar.T[i].var2Idx);
 	}
 
 
@@ -64,7 +64,7 @@ int main() {
 		prodTerminal.T[i].sourceIdx = findVarIdx(str);
 
 		getString();
-		prodTerminal.T[i].terminal = getToken(str);	
+		prodTerminal.T[i].terminal = getToken(str);
 	}
 
 	for (int i = 0; i < prodTerminal.prodCount; i++) {

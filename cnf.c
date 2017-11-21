@@ -6,7 +6,7 @@ arrayOfProductionVar prodVar;
 arrayOfProductionTerminal prodTerminal;
 
 void initFile() {
-	f = fopen("cnftest.txt", "r");
+	f = fopen("cnf.txt", "r");
 }
 
 void ignoreLine() {
@@ -181,6 +181,8 @@ Terminal getToken(char str[]) {
 		return OPENPARAN;
 	} else if (!strcmp(str, "CLOSEPARAN")) {
 		return CLOSEPARAN;
+	} else if (!strcmp(str, "FOR")) {
+		return FOR;
 	} else {
 		return -1;
 	}

@@ -108,7 +108,8 @@
 <UntilToken>
 <Input>
 <Output>
-
+#Start Variable
+<Start>
 # list of productions with two variables
 98
 <Start> <ProgramTitle> <WithoutTitle>
@@ -209,7 +210,6 @@
 <Soutput> <Output> <TargetOutput>
 <TargetOutput> <OpenParan> <CloseOutput>
 <CloseOutput> <Identifier> <CloseParam>
-
 # list of produksi yang jadi token
 53
 <Identifier> IDENTIFIER
@@ -262,6 +262,6 @@
 <StepToken> STEP
 <DoToken> DO
 <RepeatToken> REPEAT
-<UntilToken> UNITL
+<UntilToken> UNTIL
 <Input> INPUT
 <Output> OUTPUT
