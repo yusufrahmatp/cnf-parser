@@ -94,6 +94,10 @@ void readCNF() {
 	for (int i = 0; i < prodTerminal.prodCount; i++) {
 		printf("%d %d\n", prodTerminal.T[i].sourceIdx, prodTerminal.T[i].terminal);
 	}
+}
 
+Terminal getToken(char str[]) {
+	if (strcmp(str, "PROGRAM")) {
 
+	}
 }
