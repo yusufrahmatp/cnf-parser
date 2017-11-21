@@ -1,6 +1,5 @@
 # list of variables
-110
-<Char>
+108
 <Identifier>
 <Start>
 <WithoutTitle>
@@ -37,8 +36,6 @@
 <ArrayIndexClose>
 <Target>
 <TargetAssignment>
-<CharAssignment>
-<OneChar>
 <Operation>
 <Operand>
 <Sifelse>
@@ -78,7 +75,6 @@
 <Soutput>
 <TargetOutput>
 <CloseOutput>
-<Alphabet>
 <Numbers>
 <ProgramToken>
 <Semicolon>
@@ -114,15 +110,7 @@
 <Output>
 
 # list of productions with two variables
-119
-<Alphabet> <Alphabet> <Alphabet>
-<Numbers> <Numbers> <Numbers>
-<Char> <Char> <Char>
-<Char> <Alphabet> <Numbers>
-<Char> <Numbers> <Alphabet>
-<Char> <Alphabet> <Alphabet>
-<Char> <Numbers> <Numbers>
-<Identifier> <Alphabet> <Char>
+98
 <Start> <ProgramTitle> <WithoutTitle>
 <WithoutTitle> <VariableDeclaration> <MainProgram>
 <Program> <ProgramToken> <ProgramName>
@@ -171,20 +159,9 @@
 <TargetIndex> <Numbers> <TwoDTargetIndex>
 <TwoDTargetIndex> <Comma> <ArrayIndexClose>
 <ArrayIndexClose> <Numbers> <CloseSQParan>
-<Target> <AssignToken> <TargetAssignment>
-<TargetAssignment> <Numbers> <Numbers>
-<TargetAssignment> <CharAssignment> <Tick>
-<TargetAssignment> <Alphabet> <Char>
-<TargetAssignment> <Identifier> <ArrayIndex>
 <TargetAssignment> <Operand> <Operation>
-<CharAssignment> <Tick> <OneChar>
-<OneChar> <Numbers> <Tick>
-<OneChar> <Alphabet> <Tick>
-<OneChar> <OtherChar> <Tick>
 <Operation> <Operator> <Operand>
 <Operation> <Operation> <Operation>
-<Operand> <Numbers> <Numbers>
-<Operand> <Alphabet> <Char>
 <Operand> <Identifier> <ArrayIndex>
 <Sifelse> <IfToken> <IfElseBody>
 <IfElseBody> <Condition> <BeginIfProgram>
@@ -206,8 +183,6 @@
 <Condition> <TargetCondition> <ConditionOperation>
 <Condition> <Condition> <ConditionOperation>
 <RecursiveCondition> <Condition> <CloseParan>
-<TargetCondition> <Numbers> <Numbers>
-<TargetCondition> <Alphabet> <Char>
 <TargetCondition> <Identifier> <ArrayIndex>
 <TargetCondition> <Operand> <Operation>
 <ConditionOperation> <ConditionOperator> <TargetCondition>
@@ -236,116 +211,57 @@
 <CloseOutput> <Identifier> <CloseParam>
 
 # list of produksi yang jadi token
-112
-<Alphabet> a
-<Alphabet> b
-<Alphabet> c
-<Alphabet> d
-<Alphabet> e
-<Alphabet> f
-<Alphabet> g
-<Alphabet> h
-<Alphabet> i
-<Alphabet> j
-<Alphabet> k
-<Alphabet> l
-<Alphabet> m
-<Alphabet> n
-<Alphabet> o
-<Alphabet> p
-<Alphabet> q
-<Alphabet> r
-<Alphabet> s
-<Alphabet> t
-<Alphabet> u
-<Alphabet> v
-<Alphabet> w
-<Alphabet> x
-<Alphabet> y
-<Alphabet> z
-<Numbers> 0
-<Numbers> 1
-<Numbers> 2
-<Numbers> 3
-<Numbers> 4
-<Numbers> 5
-<Numbers> 6
-<Numbers> 7
-<Numbers> 8
-<Numbers> 9
-<ProgramToken> Program
-<Semicolon> ;
-<VariableDeclaration> Var
-<VarTerminal> Var
-<Comma> ,
-<Colon> :
-<DataType> integer
-<DataType> real
-<DataType> char
-<ArrayType> array
-<OpenSQParam> [
-<DoublePeriod> ..
-<CloseSQParan> ]
-<OfToken> of
-<BeginToken> begin
-<EndToken> end
-<PeriodToken> .
-<TwoDTargetIndex> ]
-<AssignToken> :=
-<TargetAssignment> 0
-<TargetAssignment> 1
-<TargetAssignment> 2
-<TargetAssignment> 3
-<TargetAssignment> 4
-<TargetAssignment> 5
-<TargetAssignment> 6
-<TargetAssignment> 7
-<TargetAssignment> 8
-<TargetAssignment> 9
-<Tick> ‘
-<Operand> 0
-<Operand> 1
-<Operand> 2
-<Operand> 3
-<Operand> 4
-<Operand> 5
-<Operand> 6
-<Operand> 7
-<Operand> 8
-<Operand> 9
-<Operator> +
-<Operator> -
-<Operator> *
-<Operator> div
-<Operator> mod
-<IfToken> if
-<ThenToken> then
-<ElseToken> else
-<OpenParan> (
-<CloseParan> )
-<TargetCondition> 0
-<TargetCondition> 1
-<TargetCondition> 2
-<TargetCondition> 3
-<TargetCondition> 4
-<TargetCondition> 5
-<TargetCondition> 6
-<TargetCondition> 7
-<TargetCondition> 8
-<TargetCondition> 9
-<ConditionOperator> <
-<ConditionOperator> >
-<ConditionOperator> <=
-<ConditionOperator> >=
-<ConditionOperator> =
-<ConditionOperator> <>
-<WhileToken> while
-<ForToken> for
-<DirToken> to
-<DirToken> downto
-<StepToken> step
-<DoToken> do
-<RepeatToken> repeat
-<UntilToken> until
-<Input> Input
-<Output> Output
+53
+<Identifier> IDENTIFIER
+<Numbers> NUM_INT
+<ProgramToken> PROGRAM
+<Semicolon> SEMICOLON
+<VariableDeclaration> VAR
+<VarTerminal> VAR
+<Comma> COMMA
+<Colon> COLON
+<DataType> TYPE_INT
+<DataType> TYPE_REAL
+<DataType> TYPE_CHAR
+<ArrayType> ARRAY
+<OpenSQParam> OPENSQPARAN
+<DoublePeriod> DOUBLE_PERIOD
+<CloseSQParan> CLOSESQPARAN
+<OfToken> OF
+<BeginToken> BEGIN
+<EndToken> END
+<PeriodToken> PERIOD
+<TwoDTargetIndex> CLOSESQPARAN
+<AssignToken> ASSIGNMENT
+<TargetAssignment> NUM_INT
+<TargetAssignment> NUM_REAL
+<TargetAssignment> CHAR
+<TargetAssignment> IDENTIFIER
+<Tick> TICK
+<Operand> NUM_INT
+<Operand> NUM_REAL
+<Operand> IDENTIFIER
+<Operator> OPT
+<IfToken> IF
+<ThenToken> THEN
+<ElseToken> ELSE
+<OpenParan> OPENPARAN
+<CloseParan> CLOSEPARAN
+<TargetCondition> NUM_INT
+<TargetCondition> NUM_REAL
+<ConditionOperator> LESS
+<ConditionOperator> GREATER
+<ConditionOperator> LESS_EQUAL
+<ConditionOperator> GREATER_EQUAL
+<ConditionOperator> EQUAL
+<ConditionOperator> NOT_EQUAL
+<WhileToken> WHILE
+<ForToken> FOR
+<DirToken> TO
+<DirToken> DOWNTO
+<StepToken> STEP
+<DoToken> DO
+<RepeatToken> REPEAT
+<UntilToken> UNITL
+<Input> INPUT
+<Output> OUTPUT
