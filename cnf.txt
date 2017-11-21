@@ -1,0 +1,242 @@
+# list of variables
+// number of variables
+// variabelnya dilist disini
+
+# list of productions with two variables
+121
+<Alphabet> <Alphabet> <Alphabet>
+<Numbers> <Numbers> <Numbers>
+<Char> <Char> <Char> <Char>
+<Char> <Alphabet> <Numbers>
+<Char> <Numbers> <Alphabet>
+<Char> <Alphabet> <Alphabet>
+<Char> <Numbers> <Numbers>
+<Identifier> <Alphabet> <Char>
+<Start> <ProgramTitle> <WithoutTitle>
+<WithoutTitle> <VariableDeclaration> <MainProgram>
+<Program> <ProgramToken> <ProgramName>
+<ProgramName> <Identifier> <Semicolon>
+<VariableDeclaration> <VarTerminal> <ListVariable>
+<ListVariable> <Variable> <Semicolon>
+<ListVariable> <ListVariable> <ListVariable>
+<Variable> <ListIdentifier> <DataStructure>
+<Variable> <ListIdentifier> <DataType>
+<Listidentifier> <Identifier> <Colon>
+<Listidentifier> <Identifier> <Otheridentifier>
+<OtherIdentifier> <Comma> <ListIdentifier>
+<DataStructure> <ArrayType> <BeginArray>
+<BeginArray> <OpenSQParan> <SizeOfArray>
+<SizeOfArray> <Numbers> <Transition>
+<Transition> <DoublePeriod> <EndCheck>
+<EndCheck> <Numbers> <TwoDCheck>
+<TwoDCheck> <CloseSQParan> <DataIdentifier>
+<TwoDCheck> <Comma> <SizeOfArrayTwoD>
+<SizeOfArrayTwoD> <Numbers> <TwoDTransition>
+<TwoDTransition> <DoublePeriod> <EndArray>
+<EndArray> <Numbers> <CloseArray>
+<CloseArray> <CloseSQParan> <DataIdentifier>
+<SizeOfArrayTwoD> <Numbers> <TwoDTransition>
+<TwoDTransition> <DoublePeriod> <EndArray>
+<EndArray> <Numbers> <CloseArray>
+<CloseArray> <CloseSQParan> <DataIdentifier>
+<DataIdentifier> <OfToken> <DataType>
+<MainProgram> <BeginToken> <EndProgram>
+<MainProgram> <BeginToken> <AfterBegin>
+<AfterBegin> <Statement> <EndProgram>
+<AfterBegin> <ListStatement> <EndProgram>
+<EndProgram> <EndToken> <PeriodToken>
+<ListStatement> <Statement> <Statement>
+<ListStatement> <Statement> <ListStatement>
+<ListStatement> <ListStatement> <ListStatement>
+<Statement> <Sassignment> <Semicolon>
+<Statement> <Sifelse> <Semicolon>
+<Statement> <Swhile> <Semicolon>
+<Statement> <Sfor> <Semicolon>
+<Statement> <Srepeat> <Semicolon>
+<Statement> <Sinput> <Semicolon>
+<Statement> <Soutput> <Semicolon>
+<Sassignment> <Identifier> <Target>
+<Sassignment> <IdentifierArray> <Target>
+<IdentifierArray> <Identifier> <ArrayIndex>
+<ArrayIndex> <OpenSQParan> <TargetIndex>
+<TargetIndex> <Numbers> <TwoDTargetIndex>
+<TwoDTargetIndex> <Colon> <ArrayIndexClose>
+<ArrayIndexClose> <Numbers> <CloseSQParan>
+<Target> <AssignToken> <TargetAssignment>
+<TargetAssignment> <Numbers> <Numbers>
+<TargetAssignment> <CharAssignment> <Tick>
+<TargetAssignment> <Alphabet> <Char>
+<TargetAssignment> <Identifier> <ArrayIndex>
+<TargetAssignment> <Operand> <Operation>
+<CharAssignment> <Tick> <OneChar>
+<OneChar> <Numbers> <Tick>
+<OneChar> <Alphabet> <Tick>
+<OneChar> <OtherChar> <Tick>
+<Operation> <Operator> <Operand>
+<Operation> <Operation> <Operation>
+<Operand> <Numbers> <Numbers>
+<Operand> <Alphabet> <Char>
+<Operand> <Identifier> <ArrayIndex>
+<Sifelse> <IfToken> <IfElseBody>
+<IfElseBody> <Condition> <BeginIfProgram>
+<BeginIfProgram> <ThenToken> <MicroProgram>
+<BeginIfProgram> <ThenToken> <IfElseMainProgram>
+<IfElseMainProgram> <MicroProgram> <IfElseRecursive>
+<MicroProgram> <BeginToken> <BodyMicroProgram>
+<MicroProgram> <BeginToken> <EndToken>
+<BodyMicroProgram> <Statement> <EndToken>
+<BodyMicroProgram> <ListStatement> <EndToken>
+<IfElseRecursive> <ElseToken> <MicroProgram>
+<IfElseRecursive> <ElseToken> <ElseIfContinuity>
+<ElseIfContinutiy> <IfToken> <ElseIf>
+<ElseIf> <Condition> <BeginElseIf>
+<BeginElseIf> <ThenToken> <ElseIfEnd>
+<ElseIfEnd> <MicroProgram> <ElseIfClose>
+<ElseIfClose> <ElseToken> <MicroProgram>
+<Condition> <OpenParan> <RecursiveCondition>
+<Condition> <TargetCondition> <ConditionOperation>
+<Condition> <Condition> <ConditionOperation>
+<RecursiveCondition> <Condition> <CloseParan>
+<TargetCondition> <Numbers> <Numbers>
+<TargetCondition> <Alphabet> <Char>
+<TargetCondition> <Identifier> <ArrayIndex>
+<TargetCondition> <Operand> <Operation>
+<ConditionOperation> <ConditionOperator> <TargetCondition>
+<ConditionOperation> <ConditionOperator> <Condition>
+<Swhile> <WhileToken> <BeginWhile>
+<BeginWhile> <Condition> <WhileBody>
+<WhileBody> <DoToken> <MicroProgram>
+<Sfor> <ForToken> <BeginFor>
+<BeginFor> <Identifier> <TargetIdentifier>
+<TargetIdentifier> <AssignToken> <StartNumIteration>
+<StartNumIteration> <Numbers> <IterateDirection>
+<IterateDirection> <DirToken> <Step>
+<Step> <Numbers> <ForMainProgram>
+<Step> <StepIterate> <TargetStep>
+<StepIterate> <Numbers> <StepToken>
+<TargetStep> <Numbers> <ForMainProgram>
+<ForMainProgram> <DoToken> <MicroProgram>
+<Srepeat> <RepeatToken> <BeginRepeat>
+<BeginRepeat> <Statement> <EndRepeat>
+<EndRepeat> <UntilToken> <Condition>
+<Sinput> <Input> <TargetInput>
+<TargetInput> <OpenParan> <CloseInput>
+<CloseInput> <Identifier> <CloseParam>
+<Soutput> <Output> <TargetOutput>
+<TargetOutput> <OpenParan> <CloseOutput>
+<CloseOutput> <Identifier> <CloseParam>
+
+# list of produksi yang jadi token
+112
+<Alphabet> a
+<Alphabet> b
+<Alphabet> c
+<Alphabet> d
+<Alphabet> e
+<Alphabet> f
+<Alphabet> g
+<Alphabet> h
+<Alphabet> i
+<Alphabet> j
+<Alphabet> k
+<Alphabet> l
+<Alphabet> m
+<Alphabet> n
+<Alphabet> o
+<Alphabet> p
+<Alphabet> q
+<Alphabet> r
+<Alphabet> s
+<Alphabet> t
+<Alphabet> u
+<Alphabet> v
+<Alphabet> w
+<Alphabet> x
+<Alphabet> y
+<Alphabet> z
+<Numbers> 0
+<Numbers> 1
+<Numbers> 2
+<Numbers> 3
+<Numbers> 4
+<Numbers> 5
+<Numbers> 6
+<Numbers> 7
+<Numbers> 8
+<Numbers> 9
+<ProgramToken> Program
+<Semicolon> ;
+<VariableDeclaration> Var
+<VarTerminal> Var
+<Comma> ,
+<Colon> :
+<DataType> integer
+<DataType> real
+<DataType> char
+<ArrayType> array
+<OpenSQParam> [
+<DoublePeriod> ..
+<CloseSQParan> ]
+<OfToken> of
+<BeginToken> begin
+<EndToken> end
+<PeriodToken> .
+<TwoDTargetIndex> ]
+<AssignToken> :=
+<TargetAssignment> 0
+<TargetAssignment> 1
+<TargetAssignment> 2
+<TargetAssignment> 3
+<TargetAssignment> 4
+<TargetAssignment> 5
+<TargetAssignment> 6
+<TargetAssignment> 7
+<TargetAssignment> 8
+<TargetAssignment> 9
+<Tick> ‘
+<Operand> 0
+<Operand> 1
+<Operand> 2
+<Operand> 3
+<Operand> 4
+<Operand> 5
+<Operand> 6
+<Operand> 7
+<Operand> 8
+<Operand> 9
+<Operator> +
+<Operator> -
+<Operator> *
+<Operator> div
+<Operator> mod
+<IfToken> if
+<ThenToken> then
+<ElseToken> else
+<OpenParan> (
+<CloseParan> )
+<TargetCondition> 0
+<TargetCondition> 1
+<TargetCondition> 2
+<TargetCondition> 3
+<TargetCondition> 4
+<TargetCondition> 5
+<TargetCondition> 6
+<TargetCondition> 7
+<TargetCondition> 8
+<TargetCondition> 9
+<ConditionOperator> <
+<ConditionOperator> >
+<ConditionOperator> <=
+<ConditionOperator> >=
+<ConditionOperator> =
+<ConditionOperator> <>
+<WhileToken> while
+<ForToken> for
+<DirToken> to
+<DirToken> downto
+<StepToken> step
+<DoToken> do
+<RepeatToken> repeat
+<UntilToken> until
+<Input> Input
+<Output> Output
