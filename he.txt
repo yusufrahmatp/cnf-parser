@@ -1,9 +1,2 @@
-program asd;
-var
-	arr: array[1..2] of integer;
-	a,b  	: char;
-
-Begin
-	a213 := 23a;
-	a[0] = 2;
-End.
+a := 'sad 213asd asd21ads 123asd123';
+b := 'b';

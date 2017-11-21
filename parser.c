@@ -11,6 +11,7 @@ int cur_line;
 typedef struct tTerminalElmt {
 	char str[20];
 	int line;
+	int col;
 } TerminalElmt;
 
 typedef struct tTerminalArray {
@@ -54,6 +55,47 @@ boolean IsStringSame(char a[], char b[]) {
 	return (strcmp(a,b) == 0);
 }
 
+boolean IsChar(char c[]) {
+	int len = strlen(c);
+	if (len != 3) {
+		return false;
+	}
+	return c[0] == '\'' && c[2] == '\'';
+}
+
+boolean IsNumInt(char c[]) {
+	int len = strlen(c);
+	for (int i = 0; i < len; i++) {
+		if (!IsNumerical(c[i]) && (i == 0 && !IsNumerical(c[i]) && c[i] != '-')) {
+			return false;
+		}
+	}
+	return true;
+}
+
+boolean IsNumReal(char c[]) {
+	int postik = -1;
+	int len = strlen(c);
+	for (int i = 0; i < len; i++) {
+		if (i == 0 && c[i] != '.' && c[i] != '-' && !IsNumerical(c[i])) {
+			printf("lele goreng\n");
+			return false;
+		}
+		if (c[i] == '.') {
+			if (postik != -1) {
+				printf("lele rebus\n");
+				return false;
+			} else {
+				postik = i;
+			}
+		} else if (i != 0 && !IsNumerical(c[i])) {
+			printf("lele kukus %c\n", c[i]);
+			return false;
+		}
+	}
+	return true;
+}
+
 int GetEnumValueFromTerminalString(char c[20]) {
 	// Match string with easily identifiable terminal
 	int arrsize = sizeof(terminal_enum)/sizeof(terminal_enum[0]);
@@ -62,10 +104,19 @@ int GetEnumValueFromTerminalString(char c[20]) {
 			return terminal_enum[i];
 		}
 	}
+
+	// handle special case string
 	if (IsStringSame(c, "+") || IsStringSame(c, "-") || IsStringSame(c, "*") || IsStringSame(c, "/") || IsStringSame(c, "%")) {
 		return OPT;
+	} else if (IsChar(c)) {
+		return CHAR;
+	} else if (IsNumInt(c)) {
+		return NUM_INT;
+	} else if (IsNumReal(c)) {
+		return NUM_REAL;
 	}
-	// Handle other case (var, int, etc)
+
+	// if none matched, return -1 (error identifier)
 	return -1;
 }
 
@@ -103,12 +154,23 @@ void parse() {
 		}
 
 		if (IsAlphaNumerical(CC)) {
-			for (int i = 0; IsAlphaNumerical(CC) && CC != EOF && CC != ' ' && CC != '\n' && CC != '\t'; i++) {
-				result.arr[result.size][i] = CC;
-				CC = getc(FIN);
-				if (!IsAlphaNumerical(CC) || CC == EOF || CC == ' ' || CC == '\n' || CC == '\t') {
-					result.arr[result.size][i+1] = '\0';
-					noread = true;
+			if (IsAlphabet(CC)) {
+				for (int i = 0; IsAlphaNumerical(CC) && CC != EOF && CC != ' ' && CC != '\n' && CC != '\t'; i++) {
+					result.arr[result.size][i] = CC;
+					CC = getc(FIN);
+					if (!IsAlphaNumerical(CC) || CC == EOF || CC == ' ' || CC == '\n' || CC == '\t') {
+						result.arr[result.size][i+1] = '\0';
+						noread = true;
+					}
+				}
+			} else {
+				for (int i = 0; IsNumerical(CC) && CC != EOF && CC != ' ' && CC != '\n' && CC != '\t'; i++) {
+					result.arr[result.size][i] = CC;
+					CC = getc(FIN);
+					if (!IsNumerical(CC) || CC == EOF || CC == ' ' || CC == '\n' || CC == '\t') {
+						result.arr[result.size][i+1] = '\0';
+						noread = true;
+					}
 				}
 			}
 		} else {
@@ -142,6 +204,20 @@ void parse() {
 					result.arr[result.size][1] = '\0';
 					noread = true;
 				}
+			} else if (CC == '\'') {
+				result.arr[result.size][0] = CC;
+				for (int i = 1; CC != EOF; i++) {
+					CC = getc(FIN);
+					if (CC == EOF) {
+						result.arr[result.size][i] = '\0';
+					} else if (CC == '\'') {
+						result.arr[result.size][i] = '\'';
+						result.arr[result.size][i+1] = '\0';
+						break;
+					} else {
+						result.arr[result.size][i] = CC;
+					}
+				}
 			} else {
 				result.arr[result.size][0] = CC;
 				result.arr[result.size][1] = '\0';
@@ -159,7 +235,13 @@ void parse() {
 }
 
 int main() {
+	char a[] = "'1'";
+	char b[] = "-23";
+	char c[] = "-.3";
+	printf("%s itu %s\n", a, (IsChar(a) ? "char" : "bukan char"));
+	printf("%s itu %s\n", b, (IsNumInt(b) ? "int" : "bukan int"));
+	printf("%s itu %s\n", c, (IsNumReal(c) ? "real" : "bukan real"));
 	// parse();
-	char c[] = "+";
-	printf("hasil %d\n", GetEnumValueFromTerminalString(c));
+	// char c[] = "+";
+	// printf("hasil %d\n", GetEnumValueFromTerminalString(c));
 }
