@@ -6,7 +6,7 @@ arrayOfProductionVar prodVar;
 arrayOfProductionTerminal prodTerminal;
 
 void initFile() {
-	f = fopen("cnftest.txt", "r");
+	f = fopen("cnf.txt", "r");
 }
 
 void ignoreLine() {

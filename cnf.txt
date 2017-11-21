@@ -3,7 +3,7 @@
 <Identifier>
 <Start>
 <WithoutTitle>
-<Program>
+<ProgramTitle>
 <ProgramName>
 <VariableDeclaration>
 <ListVariable>
@@ -108,12 +108,13 @@
 <UntilToken>
 <Input>
 <Output>
-
+# startVariable
+<Start>
 # list of productions with two variables
 98
 <Start> <ProgramTitle> <WithoutTitle>
 <WithoutTitle> <VariableDeclaration> <MainProgram>
-<Program> <ProgramToken> <ProgramName>
+<ProgramTitle> <ProgramToken> <ProgramName>
 <ProgramName> <Identifier> <Semicolon>
 <VariableDeclaration> <VarTerminal> <ListVariable>
 <ListVariable> <Variable> <Semicolon>
@@ -209,7 +210,6 @@
 <Soutput> <Output> <TargetOutput>
 <TargetOutput> <OpenParan> <CloseOutput>
 <CloseOutput> <Identifier> <CloseParam>
-
 # list of produksi yang jadi token
 53
 <Identifier> IDENTIFIER
