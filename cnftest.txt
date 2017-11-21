@@ -17,8 +17,8 @@
 <C> <C> <C>
 # List of terminal Production
 5
-<A> 1
-<A> 2
-<A> 3
-<A> 4
-<A> 5
+<A> PROGRAM
+<A> VAR
+<A> TYPE_CHAR
+<A> TYPE_INT
+<A> TYPE_REAL
