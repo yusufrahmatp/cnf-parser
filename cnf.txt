@@ -1,12 +1,123 @@
 # list of variables
-// number of variables
-// variabelnya dilist disini
+110
+<Char>
+<Identifier>
+<Start>
+<WithoutTitle>
+<Program>
+<ProgramName>
+<VariableDeclaration>
+<ListVariable>
+<Variable>
+<Listidentifier>
+<OtherIdentifier>
+<DataStructure>
+<BeginArray>
+<SizeOfArray>
+<Transition>
+<EndCheck>
+<TwoDCheck>
+<SizeOfArrayTwoD>
+<TwoDTransition>
+<EndArray>
+<CloseArray>
+<DataIdentifier>
+<MainProgram>
+<AfterBegin>
+<EndProgram>
+<EndToken>
+<PeriodToken>
+<ListStatement>
+<Statement>
+<Sassignment>
+<IdentifierArray>
+<ArrayIndex>
+<TargetIndex>
+<TwoDTargetIndex>
+<ArrayIndexClose>
+<Target>
+<TargetAssignment>
+<CharAssignment>
+<OneChar>
+<Operation>
+<Operand>
+<Sifelse>
+<IfElseBody>
+<BeginIfProgram>
+<IfElseMainProgram>
+<MicroProgram>
+<BodyMicroProgram>
+<IfElseRecursive>
+<ElseIfContinutiy>
+<ElseIf>
+<BeginElseIf>
+<ElseIfEnd>
+<ElseIfClose>
+<Condition>
+<RecursiveCondition>
+<TargetCondition>
+<ConditionOperation>
+<Swhile>
+<BeginWhile>
+<WhileBody>
+<Sfor>
+<BeginFor>
+<TargetIdentifier>
+<StartNumIteration>
+<IterateDirection>
+<Step>
+<StepIterate>
+<TargetStep>
+<ForMainProgram>
+<Srepeat>
+<BeginRepeat>
+<EndRepeat>
+<Sinput>
+<TargetInput>
+<CloseInput>
+<Soutput>
+<TargetOutput>
+<CloseOutput>
+<Alphabet>
+<Numbers>
+<ProgramToken>
+<Semicolon>
+<VarTerminal>
+<Comma>
+<Colon>
+<DataType>
+<ArrayType>
+<OpenSQParam>
+<DoublePeriod>
+<CloseSQParan>
+<OfToken>
+<BeginToken>
+<EndToken>
+<PeriodToken>
+<AssignToken>
+<Tick>
+<Operator>
+<IfToken>
+<ThenToken>
+<ElseToken>
+<OpenParan>
+<CloseParan>
+<ConditionOperator>
+<WhileToken>
+<ForToken>
+<DirToken>
+<StepToken>
+<DoToken>
+<RepeatToken>
+<UntilToken>
+<Input>
+<Output>
 
 # list of productions with two variables
-121
+119
 <Alphabet> <Alphabet> <Alphabet>
 <Numbers> <Numbers> <Numbers>
-<Char> <Char> <Char> <Char>
+<Char> <Char> <Char>
 <Char> <Alphabet> <Numbers>
 <Char> <Numbers> <Alphabet>
 <Char> <Alphabet> <Alphabet>
@@ -35,8 +146,6 @@
 <TwoDTransition> <DoublePeriod> <EndArray>
 <EndArray> <Numbers> <CloseArray>
 <CloseArray> <CloseSQParan> <DataIdentifier>
-<SizeOfArrayTwoD> <Numbers> <TwoDTransition>
-<TwoDTransition> <DoublePeriod> <EndArray>
 <EndArray> <Numbers> <CloseArray>
 <CloseArray> <CloseSQParan> <DataIdentifier>
 <DataIdentifier> <OfToken> <DataType>
@@ -60,7 +169,7 @@
 <IdentifierArray> <Identifier> <ArrayIndex>
 <ArrayIndex> <OpenSQParan> <TargetIndex>
 <TargetIndex> <Numbers> <TwoDTargetIndex>
-<TwoDTargetIndex> <Colon> <ArrayIndexClose>
+<TwoDTargetIndex> <Comma> <ArrayIndexClose>
 <ArrayIndexClose> <Numbers> <CloseSQParan>
 <Target> <AssignToken> <TargetAssignment>
 <TargetAssignment> <Numbers> <Numbers>

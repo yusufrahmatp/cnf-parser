@@ -62,7 +62,7 @@ void readCNF() {
 	getInt();									// Get the number of production
 	prodVar.prodCount = num;
 
-	for (int i = 0; i < prodVar.prodCount; i++) {	
+	for (int i = 0; i < prodVar.prodCount; i++) {
 		getString();								// Get the source string
 		prodVar.T[i].sourceIdx = findVarIdx(str);
 
@@ -88,7 +88,7 @@ void readCNF() {
 		prodTerminal.T[i].sourceIdx = findVarIdx(str);
 
 		getString();							// Get the Terminal number
-		prodTerminal.T[i].terminal = getToken(str);	
+		prodTerminal.T[i].terminal = getToken(str);
 	}
 
 	for (int i = 0; i < prodTerminal.prodCount; i++) {
@@ -173,6 +173,14 @@ Terminal getToken(char str[]) {
 		return ASSIGNMENT;
 	} else if (!strcmp(str, "TICK")) {
 		return TICK;
+	} else if (!strcmp(str, "OPENSQPARAN")) {
+		return OPENSQPARAN;
+	} else if (!strcmp(str, "CLOSESQPARAN")) {
+		return CLOSESQPARAN;
+	} else if (!strcmp(str, "OPENPARAN")) {
+		return OPENPARAN;
+	} else if (!strcmp(str, "CLOSEPARAN")) {
+		return CLOSEPARAN;
 	} else {
 		return -1;
 	}
