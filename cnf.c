@@ -1,7 +1,12 @@
 #include "cnf.h"
 
+int startVar;
+arrayOfVar var;
+arrayOfProductionVar prodVar;
+arrayOfProductionTerminal prodTerminal;
+
 void initFile() {
-	f = fopen("cnf.txt", "r");
+	f = fopen("cnftest.txt", "r");
 }
 
 void ignoreLine() {
@@ -16,17 +21,20 @@ void getInt() {
 	fscanf(f, "%d", &num);
 }
 
-int findVarIdx(char str[]) {
+int findVarIdx(char temp[]) {
 	for (int i = 0; i < var.varCount; ++i) {
-		if (strcmp(str, var.T[i]) == 0) {
+		if (strcmp(temp, var.T[i]) == 0) {
 			return i;
 		}
 	}
+	return -1;
+}
+
+void closeFile() {
+	fclose(f);
 }
 
 void readCNF() {
-	// Variables
-	char str[100];
 
 	initFile();
 

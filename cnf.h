@@ -53,9 +53,10 @@ FILE *f;
 char str[MAX_VAR_LENGTH];
 int num;
 
-arrayOfVar var;
-arrayOfProductionVar prodVar;
-arrayOfProductionTerminal prodTerminal;
+extern int startVar;
+extern arrayOfVar var;
+extern arrayOfProductionVar prodVar;
+extern arrayOfProductionTerminal prodTerminal;
 
 void initFile();
 

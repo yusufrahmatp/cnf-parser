@@ -1,0 +1,24 @@
+# List of Variables
+5
+<A>
+<B>
+<C>
+<D>
+<E>
+# Start Variable
+<A>
+# List of Producion with two variables
+6
+<A> <A> <B>
+<B> <C> <B>
+<D> <E> <B>
+<E> <B> <A>
+<C> <A> <C>
+<C> <C> <C>
+# List of terminal Production
+5
+<A> 1
+<A> 2
+<A> 3
+<A> 4
+<A> 5
