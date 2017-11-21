@@ -35,23 +35,65 @@ void closeFile() {
 }
 
 void readCNF() {
-
+	// Algorithm
 	initFile();
 
-	// Ignore the # list of variables
-	ignoreLine();
-	getInt();
+
+	ignoreLine();								// Ignore # List of Variables line
+	getInt();									// Get the number of variables
 	var.varCount = num;
 
-	// Get all the variables
 	for (int i = 0; i < var.varCount; i++) {
-		getString();
-		strcpy(var.T[i], str);
+		getString();							// Get all the variables and store it
+		strcpy(var.T[i], str);					// in var
 	}
 
-	// Ignore the # list of production with two variables
-	ignoreLine();
-	getInt();
+	for (int i = 0; i < var.varCount; ++i) {
+		printf("%s\n", var.T[i]);
+	}
+
+	ignoreLine();								// Ignore the rest of the line
+	ignoreLine();								// Ignore # List of Variables line
+	getString();								// Get the start variable
+	startVar = findVarIdx(str);
+
+	ignoreLine();								// Ignore the rest of the line
+	ignoreLine();								// Ignore the # List of Production with two variables
+	getInt();									// Get the number of production
+	prodVar.prodCount = num;
+
+	for (int i = 0; i < prodVar.prodCount; i++) {	
+		getString();								// Get the source string
+		prodVar.T[i].sourceIdx = findVarIdx(str);
+
+		getString();								// Get the var1 string
+		prodVar.T[i].var1Idx = findVarIdx(str);
+
+		getString();								// Get the var2 string
+		prodVar.T[i].var2Idx = findVarIdx(str);
+	}
+
+	for (int i = 0; i < prodVar.prodCount; i++) {
+		printf("%d %d %d\n", prodVar.T[i].sourceIdx, prodVar.T[i].var1Idx, prodVar.T[i].var2Idx);
+	}
+
+
+	ignoreLine();								// Ignore the rest of the line
+	ignoreLine();								// Ignore the list of terminal production
+	getInt();									// Get the number of production
+	prodTerminal.prodCount = num;
+
+	for (int i = 0; i < prodTerminal.prodCount; i++) {
+		getString();							// Get the source string
+		prodTerminal.T[i].sourceIdx = findVarIdx(str);
+
+		getInt();								// Get the Terminal number
+		prodTerminal.T[i].terminal = num;	
+	}
+
+	for (int i = 0; i < prodTerminal.prodCount; i++) {
+		printf("%d %d\n", prodTerminal.T[i].sourceIdx, prodTerminal.T[i].terminal);
+	}
 
 
 }

@@ -1,9 +1,6 @@
 #include "cnf.h"
 
 int main() {
-	// Variables
-	int numberOfVariables;
-
 	// Algorithm
 	initFile();
 
@@ -49,8 +46,7 @@ int main() {
 		prodVar.T[i].var2Idx = findVarIdx(str);
 	}
 
-	for (int i = 0; i < prodVar.prodCount; i++)
-	{
+	for (int i = 0; i < prodVar.prodCount; i++) {
 		printf("%d %d %d\n", prodVar.T[i].sourceIdx, prodVar.T[i].var1Idx, prodVar.T[i].var2Idx);
 	}
 
@@ -71,8 +67,7 @@ int main() {
 		prodTerminal.T[i].terminal = num;	
 	}
 
-	for (int i = 0; i < prodTerminal.prodCount; i++)
-	{
+	for (int i = 0; i < prodTerminal.prodCount; i++) {
 		printf("%d %d\n", prodTerminal.T[i].sourceIdx, prodTerminal.T[i].terminal);
 	}
 
