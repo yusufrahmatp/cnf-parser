@@ -2,6 +2,7 @@
 #include "boolean.h"
 #include "customstring.h"
 #include "cnf.h"
+#include "parser.h"
 // #include "parser.h"
 
 FILE* FIN;
@@ -10,33 +11,22 @@ int cur_line;
 int cur_col;
 StringArray result;
 
-typedef struct tTerminalElmt {
-	int val;
-	int line;
-	int col;
-} TerminalElmt;
-
-typedef struct tTerminalArray {
-	TerminalElmt arr[100];
-	int size;
-} TerminalArray;
-
 TerminalArray resultX;
 
 const int terminal_enum[] = {
 	PROGRAM, VAR, TYPE_INT, TYPE_REAL, TYPE_CHAR, ARRAY, OF, BEGIN, END,
-	IF, THEN, ELSE, WHILE, DO, TO, DOWNTO, STEP, REPEAT, UNTIL,
+	IF, THEN, ELSE, WHILE, DO, TO, DOWNTO, STEP, REPEAT, UNTIL, FOR,
 	INPUT, OUTPUT,
 	SEMICOLON, COLON, EQUAL, NOT_EQUAL, PERIOD, DOUBLE_PERIOD, COMMA, LESS, GREATER, LESS_EQUAL, GREATER_EQUAL, ASSIGNMENT, TICK,
-	OPENSQPARAN, CLOSESQPARAN, OPENPARAN, CLOSEPARAN
+	OPENSQPARAN, CLOSESQPARAN, OPENPARAN, CLOSEPARAN, OPENCRPARAN, CLOSECRPARAN
 };
 
 char terminal[][30] = {
 	"program", "var", "integer", "real", "char", "array", "of", "begin", "end",
-	"if", "then", "else", "while", "do", "to", "downto", "step", "repeat", "until",
+	"if", "then", "else", "while", "do", "to", "downto", "step", "repeat", "until", "for",
 	"input", "output",
 	";", ":", "=", "<>", ".", "..", ",", "<", ">", "<=", ">=", ":=", "'",
-	"[", "]", "(", ")"
+	"[", "]", "(", ")", "{", "}"
 };
 
 boolean IsAlphabet(char c) {
@@ -139,7 +129,7 @@ void TranslateEnumToString(char c[], int x) {
 	if (x == OPT) {
 		strcpy(c, "+");
 	} else if (x == CHAR) {
-		strcpy(c, "+");
+		strcpy(c, "'a'");
 	} else if (x == NUM_INT) {
 		strcpy(c, "123");
 	} else if (x == NUM_REAL) {
@@ -211,12 +201,40 @@ void parse() {
 			break;
 		}
 
+		result.arr[result.size][0] = '\0';
+
 		resultX.arr[resultX.size].line = cur_line;
 		resultX.arr[resultX.size].col = cur_col;
 
 		// printf(">>> %d >>> %d ", cur_line, cur_col);
-
-		if (IsAlphaNumerical(CC)) {
+		if (CC == '-') {
+			result.arr[result.size][0] = CC;
+			CC = getc(FIN);
+			if (IsAlphaNumerical(CC)) {
+				if (IsAlphabet(CC)) {
+					for (int i = 1; IsAlphaNumerical(CC) && CC != EOF && CC != ' ' && CC != '\n' && CC != '\t'; i++) {
+						result.arr[result.size][i] = CC;
+						CC = getc(FIN);
+						if (!IsAlphaNumerical(CC) || CC == EOF || CC == ' ' || CC == '\n' || CC == '\t') {
+							result.arr[result.size][i+1] = '\0';
+							noread = true;
+						}
+					}
+				} else {
+					for (int i = 1; (IsAlphaNumerical(CC) || CC == '.') && CC != EOF && CC != ' ' && CC != '\n' && CC != '\t'; i++) {
+						result.arr[result.size][i] = CC;
+						CC = getc(FIN);
+						if ((!IsAlphaNumerical(CC) && CC != '.') || CC == EOF || CC == ' ' || CC == '\n' || CC == '\t') {
+							result.arr[result.size][i+1] = '\0';
+							noread = true;
+						}
+					}
+				}
+			} else {
+				result.arr[result.size][1] = '\0';
+				noread = true;
+			}
+		} else if (IsAlphaNumerical(CC)) {
 			if (IsAlphabet(CC)) {
 				for (int i = 0; IsAlphaNumerical(CC) && CC != EOF && CC != ' ' && CC != '\n' && CC != '\t'; i++) {
 					result.arr[result.size][i] = CC;
@@ -226,22 +244,13 @@ void parse() {
 						noread = true;
 					}
 				}
-				if (CC == '\n') {
-					// NextLine();
-					// CC = getc(FIN);
-					// printf("HEHEHEHEHEHEHHHEEHEHEHEHEHEHEHEHEHE %c\n", CC);
-					// noread = true;
-				}
 			} else {
-				for (int i = 0; IsNumerical(CC) && CC != EOF && CC != ' ' && CC != '\n' && CC != '\t'; i++) {
+				for (int i = 0; (IsAlphaNumerical(CC) || CC == '.') && CC != EOF && CC != ' ' && CC != '\n' && CC != '\t'; i++) {
 					result.arr[result.size][i] = CC;
 					CC = getc(FIN);
-					if (!IsNumerical(CC) || CC == EOF || CC == ' ' || CC == '\n' || CC == '\t') {
+					if ((!IsAlphaNumerical(CC) && CC != '.') || CC == EOF || CC == ' ' || CC == '\n' || CC == '\t') {
 						result.arr[result.size][i+1] = '\0';
 						noread = true;
-					}
-					if (CC == '\n') {
-						// NextLine();
 					}
 				}
 			}
@@ -256,9 +265,6 @@ void parse() {
 					result.arr[result.size][1] = '\0';
 					noread = true;
 				}
-				if (CC == '\n') {
-					// NextLine();
-				}
 			} else if (CC == '.') {
 				result.arr[result.size][0] = CC;
 				CC = getc(FIN);
@@ -269,21 +275,17 @@ void parse() {
 					result.arr[result.size][1] = '\0';
 					noread = true;
 				}
-				if (CC == '\n') {
-					// NextLine();
-				}
 			} else if (CC == ':') {
 				result.arr[result.size][0] = CC;
+				// printf("YEUU %c == %c, ", CC, result.arr[result.size][0]);
 				CC = getc(FIN);
 				if (CC == '=') {
 					result.arr[result.size][1] = CC;
+					// printf("%c == %c ", CC, result.arr[result.size][1]);
 					result.arr[result.size][2] = '\0';
 				} else {
 					result.arr[result.size][1] = '\0';
 					noread = true;
-				}
-				if (CC == '\n') {
-					// NextLine();
 				}
 			} else if (CC == '\'') {
 				result.arr[result.size][0] = CC;
@@ -297,9 +299,6 @@ void parse() {
 						break;
 					} else {
 						result.arr[result.size][i] = CC;
-					}
-					if (CC == '\n') {
-						// NextLine();
 					}
 				}
 			} else {
@@ -323,12 +322,12 @@ void parse() {
 	}
 }
 
-int main() {
-	// printf("%s\n", terminal[8]);
-	parse();
-	for (int i = 0; i < resultX.size; i++) {
-		char c[40];
-		TranslateEnumToString(c, resultX.arr[i].val);
-		printf("%s\n", c);
-	}
-}
+// int main() {
+// 	// printf("%s\n", terminal[8]);
+// 	parse();
+// 	for (int i = 0; i < resultX.size; i++) {
+// 		char c[40];
+// 		TranslateEnumToString(c, resultX.arr[i].val);
+// 		printf("%s\n", c);
+// 	}
+// }

@@ -108,7 +108,7 @@
 <UntilToken>
 <Input>
 <Output>
-# startVariable
+#Start Variable
 <Start>
 # list of productions with two variables
 98
@@ -262,6 +262,6 @@
 <StepToken> STEP
 <DoToken> DO
 <RepeatToken> REPEAT
-<UntilToken> UNITL
+<UntilToken> UNTIL
 <Input> INPUT
 <Output> OUTPUT
