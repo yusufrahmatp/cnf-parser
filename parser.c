@@ -18,16 +18,19 @@ typedef struct tTerminalArray {
 	int size;
 } TerminalArray;
 
-// char terminals[][30] =
-// {
-// 	"program", "var", "integer", "real", "char", "array", "of", "begin",
-// 	"+", "-", "*", "/",
-// 	"div", "mod", "if", "then", "else", "while", "do", "to", "downto", "step", "repeat", "until",
-// 	"input", "output",
-// 	"0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
-// 	"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",
-// 	";", ":", "=", ".", ",", "<", ">", "<=", ">=", "=", "<>", "'"
-// }; // size
+const int terminal_enum[] = {
+	PROGRAM, TYPE_INT, TYPE_REAL, TYPE_CHAR, ARRAY, OF, BEGIN,
+	IF, THEN, ELSE, WHILE, DO, TO, DOWNTO, STEP, REPEAT, UNTIL,
+	INPUT, OUTPUT,
+	SEMICOLON, COLON, EQUAL, NOT_EQUAL, PERIOD, DOUBLE_PERIOD, COMMA, LESS, GREATER, LESS_EQUAL, GREATER_EQUAL, ASSIGNMENT, TICK
+};
+
+char terminal[][30] = {
+	"program", "integer", "real", "char", "array", "of", "begin",
+	"if", "then", "else", "while", "do", "to", "downto", "step", "repeat", "until",
+	"input", "output",
+	";", ":", "=", "<>", ".", "..", ",", "<", ">", "<=", ">=", ":=", "'"
+};
 
 boolean IsAlphabet(char c) {
 	return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'));
@@ -52,16 +55,27 @@ boolean IsStringSame(char a[], char b[]) {
 }
 
 int GetEnumValueFromTerminalString(char c[20]) {
-	if (IsStringSame(c, "program")) {
-		return PROGRAM;
+	// Match string with easily identifiable terminal
+	int arrsize = sizeof(terminal_enum)/sizeof(terminal_enum[0]);
+	for (int i = 0; i < arrsize; i++) {
+		if (IsStringSame(c, terminal[i])) {
+			return terminal_enum[i];
+		}
 	}
-	return 2;
+	if (IsStringSame(c, "+") || IsStringSame(c, "-") || IsStringSame(c, "*") || IsStringSame(c, "/") || IsStringSame(c, "%")) {
+		return OPT;
+	}
+	// Handle other case (var, int, etc)
+	return -1;
 }
 
 // >= .. <= <>
+// TODO:
+// - build pipeline : read file => lower case => convert to
+// - add line and col prop to each string/terminal
+// - testing
 void parse() {
 	char file_name[] = "he.txt";
-	// printf("Enter file name: "); scanf("%s", file_name);
 	FIN = fopen(file_name, "r");
 
 	StringArray result;
@@ -78,11 +92,8 @@ void parse() {
 		IgnoreBlank();
 
 		if (!first && !noread) {
-			// printf("bukan first\n");
 			CC = getc(FIN);
-			// printf("lelele goreng %c\n", CC);
 			IgnoreBlank();
-			// noread = false;
 		} else if (noread) {
 			noread = false;
 		}
@@ -92,41 +103,14 @@ void parse() {
 		}
 
 		if (IsAlphaNumerical(CC)) {
-			// if (CC == '2') {
-				// printf("================================================\n");
-				// printf("================================================\n");
-			// 	printf("================================================\n");
-			// 	printf("=================== IKUZO ======================\n");
-			// 	printf("================================================\n");
-			// 	printf("================================================\n");
-			// 	printf("================================================\n");
-			// }
 			for (int i = 0; IsAlphaNumerical(CC) && CC != EOF && CC != ' ' && CC != '\n' && CC != '\t'; i++) {
-				// printf("><>> %c\n", CC);
-				// printf("%d ------------- %c harusnya %c\n", i, result.arr[result.size][i], CC);
 				result.arr[result.size][i] = CC;
-				// printf("%d ------------- %c harusnya %c\n", i, result.arr[result.size][i], CC);
-				// if (CC == '2') {
-					// if (CC == result.arr[result.size][i]) {
-						// printf("sama kok\n");
-					// } else {
-						// printf("gajelas tot ewe entot\n");
-					// }
-				// }
 				CC = getc(FIN);
 				if (!IsAlphaNumerical(CC) || CC == EOF || CC == ' ' || CC == '\n' || CC == '\t') {
-					// printf("hmmm %c\n", CC);
 					result.arr[result.size][i+1] = '\0';
-					// printf("WTF TOLLL: %c %c\n", result.arr[result.size][0], result.arr[result.size][1]);
 					noread = true;
 				}
-				// if (!IsAlphaNumerical(CC)) {
-					// printf("eaaaa\n");
-					// noread = true;
-				// }
 			}
-			// printf("LE NOW >%c<\n", CC);
-			// IgnoreBlank();
 		} else {
 			if (CC == '<' || CC == '>') {
 				result.arr[result.size][0] = CC;
@@ -161,7 +145,6 @@ void parse() {
 			} else {
 				result.arr[result.size][0] = CC;
 				result.arr[result.size][1] = '\0';
-				// CC = getc(FIN);
 			}
 		}
 
@@ -177,6 +160,6 @@ void parse() {
 
 int main() {
 	// parse();
-	char c[] = "program";
+	char c[] = "+";
 	printf("hasil %d\n", GetEnumValueFromTerminalString(c));
 }
