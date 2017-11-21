@@ -11,6 +11,15 @@ void InitializeCYK(CYKMatrix *C, int row_size, int col_size) {
 }
 
 void SolveCYK(arrayOfProductionVar P1, arrayOfProductionTerminal P2, TerminalArray S) {
+	printf("======================================\n");
+	printf("======================================\n");
+	printf("========== ProdVar ===================\n");
+	printf("======================================\n");
+	printf("======================================\n");
+	printf("%d\n", P1.prodCount);
+	for (int i = 0; i < P1.prodCount; i++) {
+		printf("%d => %d %d\n", P1.T[i].sourceIdx, P1.T[i].var1Idx, P1.T[i].var2Idx);
+	}
 	CYKMatrix cyk;
 	InitializeCYK(&cyk, S.size, S.size);
 	for (int i = 0; i < S.size; i++) {
@@ -39,8 +48,9 @@ void SolveCYK(arrayOfProductionVar P1, arrayOfProductionTerminal P2, TerminalArr
 					if (S1.size != 0 && S2.size != 0) {
 						for (int x = 0; x < S1.size; x++) {
 							for (int y = 0; y < S2.size; y++) {
+								// printf("CROSS %d %d\n", S1.arr[x],);
 								cross[cross_size][0] = S1.arr[x];
-								cross[cross_size][1] = S1.arr[y];
+								cross[cross_size][1] = S2.arr[y];
 								cross_size++;
 							}
 						}
