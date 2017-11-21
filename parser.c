@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "boolean.h"
 #include "customstring.h"
+#include "cnf.h"
 // #include "parser.h"
 
 FILE* FIN;
@@ -44,6 +45,17 @@ void IgnoreBlank() {
 	while (CC != EOF && (CC == ' ' || CC == '\n' || CC == '\t')) {
 		CC = getc(FIN);
 	}
+}
+
+boolean IsStringSame(char a[], char b[]) {
+	return (strcmp(a,b) == 0);
+}
+
+int GetEnumValueFromTerminalString(char c[20]) {
+	if (IsStringSame(c, "program")) {
+		return PROGRAM;
+	}
+	return 2;
 }
 
 // >= .. <= <>
@@ -164,5 +176,7 @@ void parse() {
 }
 
 int main() {
-	parse();
+	// parse();
+	char c[] = "program";
+	printf("hasil %d\n", GetEnumValueFromTerminalString(c));
 }
