@@ -1,13 +1,8 @@
-a := 'sad 213asd asd21ads 123asd123';
-b := 'b';
+program abc;
 
+var
+	a: integer;
 
-
-12 = 12;
-
-
-'x'
-      nmnmnnnm dasd
-      asd
-
-      ds
+begin
+	a := 'c';
+end.

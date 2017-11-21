@@ -8,6 +8,7 @@ FILE* FIN;
 char CC;
 int cur_line;
 int cur_col;
+StringArray result;
 
 typedef struct tTerminalElmt {
 	int val;
@@ -20,15 +21,17 @@ typedef struct tTerminalArray {
 	int size;
 } TerminalArray;
 
+TerminalArray resultX;
+
 const int terminal_enum[] = {
-	PROGRAM, TYPE_INT, TYPE_REAL, TYPE_CHAR, ARRAY, OF, BEGIN,
+	PROGRAM, VAR, TYPE_INT, TYPE_REAL, TYPE_CHAR, ARRAY, OF, BEGIN, END,
 	IF, THEN, ELSE, WHILE, DO, TO, DOWNTO, STEP, REPEAT, UNTIL,
 	INPUT, OUTPUT,
 	SEMICOLON, COLON, EQUAL, NOT_EQUAL, PERIOD, DOUBLE_PERIOD, COMMA, LESS, GREATER, LESS_EQUAL, GREATER_EQUAL, ASSIGNMENT, TICK
 };
 
 char terminal[][30] = {
-	"program", "integer", "real", "char", "array", "of", "begin",
+	"program", "var", "integer", "real", "char", "array", "of", "begin", "end",
 	"if", "then", "else", "while", "do", "to", "downto", "step", "repeat", "until",
 	"input", "output",
 	";", ":", "=", "<>", ".", "..", ",", "<", ">", "<=", ">=", ":=", "'"
@@ -47,7 +50,6 @@ boolean IsAlphaNumerical(char c) {
 }
 
 void NextLine() {
-	printf("nenenenenen\n");
 	cur_line++;
 	cur_col = 1;
 }
@@ -122,7 +124,33 @@ boolean IsVariable(char c[]) {
 	return true;
 }
 
+void TranslateEnumToString(char c[], int x) {
+	// Match string with easily identifiable terminal
+	int arrsize = sizeof(terminal_enum)/sizeof(terminal_enum[0]);
+	for (int i = 0; i < arrsize; i++) {
+		if (terminal_enum[i] == x) {
+			strcpy(c, terminal[i]);
+			return;
+		}
+	}
+
+	if (x == OPT) {
+		strcpy(c, "+");
+	} else if (x == CHAR) {
+		strcpy(c, "+");
+	} else if (x == NUM_INT) {
+		strcpy(c, "123");
+	} else if (x == NUM_REAL) {
+		strcpy(c, "1.23");
+	} else if (x == IDENTIFIER) {
+		strcpy(c, "abc");
+	} else {
+		strcpy(c, ">ERROR<");
+	}
+}
+
 int GetEnumValueFromTerminalString(char c[20]) {
+	// printf(">>>%s<<<<\n", c);
 	// Match string with easily identifiable terminal
 	int arrsize = sizeof(terminal_enum)/sizeof(terminal_enum[0]);
 	for (int i = 0; i < arrsize; i++) {
@@ -141,7 +169,7 @@ int GetEnumValueFromTerminalString(char c[20]) {
 	} else if (IsNumReal(c)) {
 		return NUM_REAL;
 	} else if (IsVariable(c)) {
-		return VAR;
+		return IDENTIFIER;
 	}
 
 	// if none matched, return -1 (error identifier)
@@ -150,16 +178,11 @@ int GetEnumValueFromTerminalString(char c[20]) {
 
 // >= .. <= <>
 // TODO:
-// - col
-// - build pipeline : read file => lower case => convert to
-// - add line and col prop to each string/terminal
 // - testing
 void parse() {
 	char file_name[] = "he.txt";
 	FIN = fopen(file_name, "r");
 
-	TerminalArray resultX;
-	StringArray result;
 	resultX.size = 0;
 	result.size = 0;
 
@@ -189,7 +212,7 @@ void parse() {
 		resultX.arr[resultX.size].line = cur_line;
 		resultX.arr[resultX.size].col = cur_col;
 
-		printf(">>> %d >>> %d ", cur_line, cur_col);
+		// printf(">>> %d >>> %d ", cur_line, cur_col);
 
 		if (IsAlphaNumerical(CC)) {
 			if (IsAlphabet(CC)) {
@@ -299,5 +322,11 @@ void parse() {
 }
 
 int main() {
+	// printf("%s\n", terminal[8]);
 	parse();
+	for (int i = 0; i < resultX.size; i++) {
+		char c[40];
+		TranslateEnumToString(c, resultX.arr[i].val);
+		printf("%s\n", c);
+	}
 }
