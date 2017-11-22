@@ -113,7 +113,7 @@
 #Start Variable
 <Start>
 # list of productions with two variables
-98
+99
 <Start> <ProgramTitle> <WithoutTitle>
 <WithoutTitle> <VariableDeclaration> <MainProgram>
 <ProgramTitle> <ProgramToken> <ProgramName>
@@ -162,6 +162,7 @@
 <TargetIndex> <Numbers> <TwoDTargetIndex>
 <TwoDTargetIndex> <Comma> <ArrayIndexClose>
 <ArrayIndexClose> <Numbers> <CloseSQParan>
+<Target> <AssignToken> <TargetAssignment>
 <TargetAssignment> <Operand> <Operation>
 <Operation> <Operator> <Operand>
 <Operation> <Operation> <Operation>
