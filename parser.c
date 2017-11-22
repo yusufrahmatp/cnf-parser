@@ -142,6 +142,13 @@ void TranslateEnumToString(char c[], int x) {
 }
 
 int GetEnumValueFromTerminalString(char c[20]) {
+	// lowecase string
+	for (int i = 0; c[i] != '\0'; i++) {
+		if (c[i] >= 'A' && c[i] <= 'Z') {
+			c[i] = c[i] - 'A' + 'a';
+		}
+	}
+
 	// printf(">>>%s<<<<\n", c);
 	// Match string with easily identifiable terminal
 	int arrsize = sizeof(terminal_enum)/sizeof(terminal_enum[0]);
@@ -152,7 +159,7 @@ int GetEnumValueFromTerminalString(char c[20]) {
 	}
 
 	// handle special case string
-	if (IsStringSame(c, "+") || IsStringSame(c, "-") || IsStringSame(c, "*") || IsStringSame(c, "/") || IsStringSame(c, "%")) {
+	if (IsStringSame(c, "+") || IsStringSame(c, "-") || IsStringSame(c, "*") || IsStringSame(c, "div") || IsStringSame(c, "mod")) {
 		return OPT;
 	} else if (IsChar(c)) {
 		return CHAR;
