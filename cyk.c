@@ -80,5 +80,19 @@ void SolveCYK(arrayOfProductionVar P1, arrayOfProductionTerminal P2, TerminalArr
 		}
 		printf("\n");
 	}
+
+	boolean AC = false;
+	int ac_enum = 1; // START
+	for (int i = 0 ; i < cyk.mat[S.size-1][0].size; i++) {
+		if (cyk.mat[S.size-1][0].arr[i] == ac_enum) {
+			AC = true;
+			break;
+		}
+	}
+	if (AC) {
+		printf("ACCEPTED\n");
+	} else {
+		printf("REJECTED\n");
+	}
 }
 

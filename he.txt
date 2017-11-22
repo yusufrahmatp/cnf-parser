@@ -1,4 +1,4 @@
-program test;
+program abc;
 var
 	ini, itu, i, j: integer;
 	itu : array[1..4] of real;
@@ -13,7 +13,7 @@ begin
 		begin
 			itu := itu + 5;
 		end;
-		
+
 		i := 4;
-			
+
 end.
