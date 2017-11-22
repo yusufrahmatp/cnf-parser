@@ -108,7 +108,7 @@ Terminal getToken(char str[]) {
 	} else if (!strcmp(str, "TYPE_REAL")) {
 		return TYPE_REAL;
 	} else if (!strcmp(str, "TYPE_CHAR")) {
-		return ARRAY;
+		return TYPE_CHAR;
 	} else if (!strcmp(str, "OF")) {
 		return OF;
 	} else if (!strcmp(str, "BEGIN")) {
