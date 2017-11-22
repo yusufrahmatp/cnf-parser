@@ -11,6 +11,7 @@ void InitializeCYK(CYKMatrix *C, int row_size, int col_size) {
 }
 
 void SolveCYK(arrayOfProductionVar P1, arrayOfProductionTerminal P2, TerminalArray S) {
+	// printf("YAH %d\n", P2.T[10].terminal);
 	CYKMatrix cyk;
 	InitializeCYK(&cyk, S.size, S.size);
 	for (int i = 0; i < S.size; i++) {

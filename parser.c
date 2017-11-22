@@ -223,11 +223,27 @@ void parse() {
 				} else {
 					for (int i = 1; (IsAlphaNumerical(CC) || CC == '.') && CC != EOF && CC != ' ' && CC != '\n' && CC != '\t'; i++) {
 						result.arr[result.size][i] = CC;
+						char prev_char = CC;
 						CC = getc(FIN);
 						if ((!IsAlphaNumerical(CC) && CC != '.') || CC == EOF || CC == ' ' || CC == '\n' || CC == '\t') {
 							result.arr[result.size][i+1] = '\0';
 							noread = true;
 						}
+						if (prev_char == '.' && CC == '.') {
+							result.arr[result.size][i] ='\0';
+							resultX.arr[resultX.size].val = GetEnumValueFromTerminalString(result.arr[result.size]);
+							// printf(">>> %s >> enum = %d\n", result.arr[result.size], resultX.arr[resultX.size].val);
+							result.size++;
+							resultX.size++;
+							first = false;
+							cur_col++;
+							IgnoreBlank();
+							result.arr[result.size][0] = '.';
+							result.arr[result.size][1] = '.';
+							result.arr[result.size][2] = '\0';
+							break;
+						}
+
 					}
 				}
 			} else {
@@ -247,11 +263,27 @@ void parse() {
 			} else {
 				for (int i = 0; (IsAlphaNumerical(CC) || CC == '.') && CC != EOF && CC != ' ' && CC != '\n' && CC != '\t'; i++) {
 					result.arr[result.size][i] = CC;
+					char prev_char = CC;
 					CC = getc(FIN);
 					if ((!IsAlphaNumerical(CC) && CC != '.') || CC == EOF || CC == ' ' || CC == '\n' || CC == '\t') {
 						result.arr[result.size][i+1] = '\0';
 						noread = true;
 					}
+					if (prev_char == '.' && CC == '.') {
+						result.arr[result.size][i] ='\0';
+						resultX.arr[resultX.size].val = GetEnumValueFromTerminalString(result.arr[result.size]);
+						printf(">>> %s >> enum = %d\n", result.arr[result.size], resultX.arr[resultX.size].val);
+						result.size++;
+						resultX.size++;
+						first = false;
+						cur_col++;
+						IgnoreBlank();
+						result.arr[result.size][0] = '.';
+						result.arr[result.size][1] = '.';
+						result.arr[result.size][2] = '\0';
+						break;
+					}
+
 				}
 			}
 		} else {
@@ -320,14 +352,16 @@ void parse() {
 
 		IgnoreBlank();
 	}
+	// printf("YEUUUUUUUUUUUU\n");
+	// for (int i = 0; i < resultX.size; i++) {
+	// 	char c[40];
+	// 	TranslateEnumToString(c, resultX.arr[i].val);
+	// 	printf("%s\n", c);
+	// }
 }
 
 // int main() {
 // 	// printf("%s\n", terminal[8]);
 // 	parse();
-// 	for (int i = 0; i < resultX.size; i++) {
-// 		char c[40];
-// 		TranslateEnumToString(c, resultX.arr[i].val);
-// 		printf("%s\n", c);
-// 	}
+// 	
 // }
