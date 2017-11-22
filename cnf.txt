@@ -214,7 +214,7 @@
 <TargetOutput> <OpenParan> <CloseOutput>
 <CloseOutput> <Identifier> <CloseParan>
 # list of produksi yang jadi token
-55
+56
 <Identifier> IDENTIFIER
 <Numbers> NUM_INT
 <ProgramToken> PROGRAM
