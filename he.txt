@@ -1,5 +1,10 @@
-program abjiar;
+program abc;
 var
 	a: array[1..20] of char;
 begin
+	tralalala := 0;
+	if (tralala = 1) then
+	begin
+		bumbum := 112;
+	end;
 end.

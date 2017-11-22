@@ -252,6 +252,7 @@
 <CloseParan> CLOSEPARAN
 <TargetCondition> NUM_INT
 <TargetCondition> NUM_REAL
+<TargetCondition> IDENTIFIER
 <LogicToken> AND
 <LogicToken> OR
 <ConditionOperator> LESS
