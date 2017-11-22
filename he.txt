@@ -1,9 +1,19 @@
-program abc;
+program test;
 var
-	a: array[1..20] of char;
+	ini, itu, i, j: integer;
+	itu : array[1..4] of real;
 begin
-	if ((1 <= 1) and (2 = 1)) then
-	begin
-		lalal := 1;
-	end;
+	ini := 5;
+	for i := 1 to 5 step 4 do
+		begin
+			ini := ini * 4;
+		end;
+
+		for i := 10 downto 5 do
+		begin
+			itu := itu + 5;
+		end;
+		
+		i := 4;
+			
 end.
