@@ -1,22 +1,21 @@
-Program test ;
-Var
-	Ini, itu, I , j: integer;
-	Itu : array[1..4] of real;
-Begin
-	Ini := 5;
-	If ((Ini*5 > 10) and (itu mod 4 <100)) then
-	Begin
-		For I := 1 to 5 step 4 do
-		Begin
-			ini := ini*4;
-		End;
-		I := 4;
-		While I <=4 do
-		Begin
-			J := 5;
-			Repeat
-				J:= j-1;
-			Until j = 0;
-		End;
-	End;
-End.
+PROGRAM asd;
+VAR
+	ini, itu, i, j : integer;
+	itu : array[1..4] of real;
+BEGIN
+	itu := 5;
+	if ((ini <= 5) and (itu mod 4 <= 5)) then
+	begin
+		intalala := 1;
+		for i := 1 to 4 step 100 do
+		begin
+			lulu := 12133.4444;
+		end;
+	end;
+	while i <= 123123 do
+	begin
+		repeat
+			i := 5.123;
+		until i < 4;
+	end;
+END.

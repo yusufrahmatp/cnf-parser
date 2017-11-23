@@ -8,7 +8,7 @@ typedef struct tTerminalElmt {
 } TerminalElmt;
 
 typedef struct tTerminalArray {
-	TerminalElmt arr[100];
+	TerminalElmt arr[10000];
 	int size;
 } TerminalArray;
 
