@@ -20,7 +20,6 @@ To run the program, simply
 ```
 $ ./main
 ```
-and enjoy the game.
 
 '## Authors
 
