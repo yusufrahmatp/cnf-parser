@@ -3,7 +3,7 @@
 #include "customstring.h"
 #include "cnf.h"
 #include "parser.h"
-// #include "parser.h"
+#include <unistd.h>
 
 FILE* FIN;
 char CC;
@@ -179,8 +179,25 @@ int GetEnumValueFromTerminalString(char c[20]) {
 // TODO:
 // - testing
 void parse() {
-	char file_name[] = "he.txt";
-	FIN = fopen(file_name, "r");
+	char file_name[50];
+
+	do {
+		printf("Enter load file name:\n");
+		scanf("%s", file_name);
+		FIN = fopen(file_name, "r");
+		int input;
+        if (access(file_name, F_OK) == -1) {
+			printf("File \"%s\" doesn't exist. Choose command: \n\n", file_name);
+			printf("1. Enter another file name\n");
+			printf("2. Exit\n");
+	        scanf("%d", &input);
+
+	        switch (input) {
+	            case 1  : break;
+	            default : exit(0);
+	        }
+        }
+	} while(access( file_name, F_OK ) == -1 );
 
 	resultX.size = 0;
 	result.size = 0;
@@ -279,7 +296,7 @@ void parse() {
 					if (prev_char == '.' && CC == '.') {
 						result.arr[result.size][i] ='\0';
 						resultX.arr[resultX.size].val = GetEnumValueFromTerminalString(result.arr[result.size]);
-						printf(">>> %s >> enum = %d\n", result.arr[result.size], resultX.arr[resultX.size].val);
+						// printf(">>> %s >> enum = %d\n", result.arr[result.size], resultX.arr[resultX.size].val);
 						result.size++;
 						resultX.size++;
 						first = false;
@@ -370,5 +387,5 @@ void parse() {
 // int main() {
 // 	// printf("%s\n", terminal[8]);
 // 	parse();
-// 	
+//
 // }

@@ -1,21 +1,118 @@
-PROGRAM asd;
+program a;
 VAR
-	ini, itu, i, j : integer;
-	itu : array[1..4] of real;
-BEGIN
-	itu := 5;
-	if ((ini <= 5) and (itu mod 4 <= 5)) then
-	begin
-		intalala := 1;
-		for i := 1 to 4 step 100 do
+	tae : integer;
+	bum : array[1..4] of integer;
+begin
+		for i := 10 downto 5 do
 		begin
-			lulu := 12133.4444;
+			ini := yoyo mod 4;
 		end;
-	end;
-	while i <= 123123 do
-	begin
-		repeat
-			i := 5.123;
-		until i < 4;
-	end;
-END.
+		for i := 10 downto 5 do
+		begin
+			ini := yoyo mod 4;
+		end;
+		for i := 10 downto 5 do
+		begin
+			ini := yoyo mod 4;
+		end;
+		for i := 10 downto 5 do
+		begin
+			ini := yoyo mod 4;
+		end;
+		for i := 10 downto 5 do
+		begin
+			ini := yoyo mod 4;
+		end;
+		for i := 10 downto 5 do
+		begin
+			ini := yoyo mod 4;
+		end;
+		for i := 10 downto 5 do
+		begin
+			ini := yoyo mod 4;
+		end;
+		for i := 10 downto 5 do
+		begin
+			ini := yoyo mod 4;
+		end;
+		for i := 10 downto 5 do
+		begin
+			ini := yoyo mod 4;
+		end;
+		for i := 10 downto 5 do
+		begin
+			ini := yoyo mod 4;
+		end;
+		for i := 10 downto 5 do
+		begin
+			ini := yoyo mod 4;
+		end;
+		for i := 10 downto 5 do
+		begin
+			ini := yoyo mod 4;
+		end;
+		for i := 10 downto 5 do
+		begin
+			ini := yoyo mod 4;
+		end;
+		for i := 10 downto 5 do
+		begin
+			ini := yoyo mod 4;
+		end;
+		for i := 10 downto 5 do
+		begin
+			ini := yoyo mod 4;
+		end;
+		for i := 10 downto 5 do
+		begin
+			ini := yoyo mod 4;
+		end;
+		for i := 10 downto 5 do
+		begin
+			ini := yoyo mod 4;
+		end;
+		for i := 10 downto 5 do
+		begin
+			ini := yoyo mod 4;
+		end;
+		for i := 10 downto 5 do
+		begin
+			ini := yoyo mod 4;
+		end;
+		for i := 10 downto 5 do
+		begin
+			ini := yoyo mod 4;
+		end;
+		for i := 10 downto 5 do
+		begin
+			ini := yoyo mod 4;
+		end;
+		for i := 10 downto 5 do
+		begin
+			ini := yoyo mod 4;
+		end;
+		for i := 10 downto 5 do
+		begin
+			ini := yoyo mod 4;
+		end;
+		for i := 10 downto 5 do
+		begin
+			ini := yoyo mod 4;
+		end;
+		for i := 10 downto 5 do
+		begin
+			ini := yoyo mod 4;
+		end;
+		for i := 10 downto 5 do
+		begin
+			ini := yoyo mod 4;
+		end;
+		for i := 10 downto 5 do
+		begin
+			ini := yoyo mod 4;
+		end;
+		for i := 10 downto 5 do
+		begin
+			ini := yoyo mod 4;
+		end;
+end.

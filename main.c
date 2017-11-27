@@ -2,7 +2,6 @@
 #include <string.h>
 
 #include "customstring.h"
-#include "token.h"
 #include "cnf.h"
 #include "cyk.h"
 

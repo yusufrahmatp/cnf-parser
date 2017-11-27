@@ -1,20 +1,8 @@
-#include "token.h"
 #include "cnf.h"
 #include "customstring.h"
 #include "parser.h"
 
 #define NMaxCYK 20
-
-// typedef struct yCYKElmtArray {
-// 	StringArray arr[10];
-// 	int size;
-// } CYKElmtArray;
-
-// typedef struct tCYK {
-// 	StringArray mat[NMaxCYK][NMaxCYK];
-// 	int row_size;
-// 	int col_size;
-// } CYK;
 
 typedef struct tCYKElmt {
 	int arr[10];
@@ -22,7 +10,7 @@ typedef struct tCYKElmt {
 } CYKElmt;
 
 typedef struct tCYKMatrix {
-	CYKElmt mat[100][100];
+	CYKElmt **mat;
 	int row_size;
 	int col_size;
 } CYKMatrix;
