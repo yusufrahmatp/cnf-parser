@@ -1,9 +1,0 @@
-Program abc;
-var
-	a: array[1..20] of char;
-begin
-	if ((1 <= 1) and (2 = 1)) then
-	begin
-		lalal := 1;
-	end;
-end.
