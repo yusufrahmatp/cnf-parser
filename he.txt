@@ -1,0 +1,118 @@
+program a;
+VAR
+	tae : integer;
+	bum : array[1..4] of integer;
+begin
+		for i := 10 downto 5 do
+		begin
+			ini := yoyo mod 4;
+		end;
+		for i := 10 downto 5 do
+		begin
+			ini := yoyo mod 4;
+		end;
+		for i := 10 downto 5 do
+		begin
+			ini := yoyo mod 4;
+		end;
+		for i := 10 downto 5 do
+		begin
+			ini := yoyo mod 4;
+		end;
+		for i := 10 downto 5 do
+		begin
+			ini := yoyo mod 4;
+		end;
+		for i := 10 downto 5 do
+		begin
+			ini := yoyo mod 4;
+		end;
+		for i := 10 downto 5 do
+		begin
+			ini := yoyo mod 4;
+		end;
+		for i := 10 downto 5 do
+		begin
+			ini := yoyo mod 4;
+		end;
+		for i := 10 downto 5 do
+		begin
+			ini := yoyo mod 4;
+		end;
+		for i := 10 downto 5 do
+		begin
+			ini := yoyo mod 4;
+		end;
+		for i := 10 downto 5 do
+		begin
+			ini := yoyo mod 4;
+		end;
+		for i := 10 downto 5 do
+		begin
+			ini := yoyo mod 4;
+		end;
+		for i := 10 downto 5 do
+		begin
+			ini := yoyo mod 4;
+		end;
+		for i := 10 downto 5 do
+		begin
+			ini := yoyo mod 4;
+		end;
+		for i := 10 downto 5 do
+		begin
+			ini := yoyo mod 4;
+		end;
+		for i := 10 downto 5 do
+		begin
+			ini := yoyo mod 4;
+		end;
+		for i := 10 downto 5 do
+		begin
+			ini := yoyo mod 4;
+		end;
+		for i := 10 downto 5 do
+		begin
+			ini := yoyo mod 4;
+		end;
+		for i := 10 downto 5 do
+		begin
+			ini := yoyo mod 4;
+		end;
+		for i := 10 downto 5 do
+		begin
+			ini := yoyo mod 4;
+		end;
+		for i := 10 downto 5 do
+		begin
+			ini := yoyo mod 4;
+		end;
+		for i := 10 downto 5 do
+		begin
+			ini := yoyo mod 4;
+		end;
+		for i := 10 downto 5 do
+		begin
+			ini := yoyo mod 4;
+		end;
+		for i := 10 downto 5 do
+		begin
+			ini := yoyo mod 4;
+		end;
+		for i := 10 downto 5 do
+		begin
+			ini := yoyo mod 4;
+		end;
+		for i := 10 downto 5 do
+		begin
+			ini := yoyo mod 4;
+		end;
+		for i := 10 downto 5 do
+		begin
+			ini := yoyo mod 4;
+		end;
+		for i := 10 downto 5 do
+		begin
+			ini := yoyo mod 4;
+		end;
+end.
