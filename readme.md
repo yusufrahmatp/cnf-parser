@@ -3,7 +3,7 @@ with CYK algorithm
 
 ## Getting Started
 
-These instructions will tell you how to compile and play the game.
+These instructions will tell you how to compile and run the program.
 
 ### Compiling
 
