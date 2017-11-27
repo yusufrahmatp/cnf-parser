@@ -86,7 +86,6 @@ void SolveCYK(arrayOfProductionVar P1, arrayOfProductionTerminal P2, TerminalArr
 			break;
 		}
 	}
-	printf("Input program is: \n");
 	if (AC) {
 		printf("ACCEPTED\n");
 	} else {
